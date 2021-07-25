@@ -12,7 +12,6 @@ Flask==1.0.2
 Flask-Cors==3.0.7
 future==0.17.1
 idna==2.7
-IndicoIo==1.2.0
 ipaddress==1.0.22
 itsdangerous==1.1.0
 Jinja2==2.10
@@ -39,4 +38,3 @@ six==1.11.0
 tornado==5.0.2
 urllib3==1.23
 Werkzeug==0.14.1
-xattr==0.6.4
