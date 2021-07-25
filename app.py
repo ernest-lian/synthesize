@@ -1,15 +1,15 @@
 import os
-from flask import Flask, request
-from flask_cors import CORS, cross_origin
+from flask import Flask, request, send_from_directory
+from flask_restful import Api, Resource, reqparse
+from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='client/build')
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+@app.route("/", defaults={'path':''})
+def serve(path):
+    return send_from_directory(app.static_folder,'index.html')
 
 @app.route("/testing", methods = ['POST'])
 def testing():
