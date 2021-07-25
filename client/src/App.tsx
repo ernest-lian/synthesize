@@ -1,6 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 
+function api(){
+  return fetch("http://ernest-lian-synthesize.herokuapp.com/testing", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      'value': 'ernest'
+    })
+  }).then(response => {
+      console.log(response)
+    })
+}
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +32,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <input type='button' onClick={() => api()}></input>
     </div>
   );
 }
