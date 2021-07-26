@@ -8,8 +8,8 @@ CORS(app)
 api = Api(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route("/", defaults={'path':''})
-def serve(path):
+@app.route("/")
+def index():
     return send_from_directory(app.static_folder,'index.html')
 
 @app.route("/testing", methods = ['POST'])
