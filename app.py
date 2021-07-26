@@ -3,7 +3,7 @@ from flask import Flask, request, send_from_directory
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 
-app = Flask(__name__, static_url_path='', static_folder='client/build')
+app = Flask(__name__, static_url_path='', static_folder='./client/build')
 CORS(app)
 api = Api(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
