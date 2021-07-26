@@ -3,15 +3,16 @@ from flask import Flask, request, send_from_directory
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 
-app = Flask(__name__, static_folder=os.path.abspath('./client/build'))
+app = Flask(__name__, static_folder=os.path.abspath('./client/build'), static_url_path='/')
 CORS(app)
 api = Api(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route("/")
-def index():
+@app.route("/", defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
     print(app.static_folder)
-    return send_from_directory(app.static_folder,'index.html')
+    return app.send_static_file('index.html')
 
 @app.route("/testing", methods = ['POST'])
 def testing():
