@@ -10,8 +10,9 @@ function api(){
     body: JSON.stringify({
       'value': 'ernest'
     })
-  }).then(response => {
-      console.log(response)
+  }).then(response => response.json())
+  .then({ data =>
+      console.log(data)
     })
 }
 
