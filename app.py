@@ -16,6 +16,7 @@ def index():
 @app.route("/testing", methods = ['POST'])
 def testing():
     data = request.get_json()
+    print(data['value'])
     return data['value']
 
 if __name__ == '__main__':

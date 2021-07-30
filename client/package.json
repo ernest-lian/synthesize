@@ -21,11 +21,9 @@
   "homepage": "https://ernest-lian-synthesize.herokuapp.com/",
   "scripts": {
     "start": "react-scripts start",
-    "build": "webpack --progress --verbose --colors --display-error-details --config webpack/common.config.js",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "clean": "rimraf dist",
-    "build:production": "npm run clean && npm run build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
