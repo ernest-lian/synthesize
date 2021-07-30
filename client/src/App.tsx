@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function api(){
-  return fetch("http://ernest-lian-synthesize.herokuapp.com/testing", {
+  return fetch("https://ernest-lian-synthesize.herokuapp.com/testing", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
