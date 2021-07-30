@@ -1,18 +1,17 @@
 import os
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, render_template, send_from_directory
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 
-app = Flask(__name__, static_folder=os.path.abspath('./client/build/static'), template_folder='./client/build')
+app = Flask(__name__, static_folder=os.path.abspath('./client/build/static'), template_folder='./client/build/static')
 CORS(app)
 api = Api(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route("/", defaults={'path': ''})
-@app.route('/<path:path>')
-def index(path):
-    print(app.static_folder)
-    return app.send_static_file('index.html')
+@app.route('/')
+def index():
+    print("accessing the index path")
+    return render_template('index.html')
 
 @app.route("/testing", methods = ['POST'])
 def testing():
@@ -22,5 +21,5 @@ def testing():
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', debug=False, port=port)
 
