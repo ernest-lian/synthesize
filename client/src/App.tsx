@@ -1,8 +1,9 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.css'; 
 
 function api(){
-  return fetch("https://ernest-lian-synthesize.herokuapp.com/testing", {
+  return fetch("http://localhost:5000/testing", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -10,13 +11,36 @@ function api(){
     body: JSON.stringify({
       'value': 'ernest'
     })
-  }).then(response => response.json())
-  .then({ data =>
-      console.log(data)
-    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('the data: ', data)
+  }).catch(error => console.error('Error', error))
 }
 
-function App() {
+const App = ({
+    
+}) => {
+  const [text, setText] = useState("");
+
+
+   const handleClick = () => {
+      return fetch("http://localhost:5000/testing", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          'value': 'ernest'
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        setText(data['name'])
+        console.log('the data: ', data)
+      }).catch(error => console.error('Error', error))
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -33,7 +57,8 @@ function App() {
           Learn React
         </a>
       </header>
-      <input type='button' onClick={() => api()}></input>
+      <p>{text}</p>
+      <button onClick={() => handleClick()}></button>;
     </div>
   );
 }

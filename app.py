@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, request, render_template, jsonify
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 
@@ -16,8 +16,11 @@ def index():
 @app.route("/testing", methods = ['POST'])
 def testing():
     data = request.get_json()
-    print(data['value'])
-    return data['value']
+
+    name = data['value']
+
+    response = jsonify(name=name)
+    return response
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
