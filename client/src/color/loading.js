@@ -1,0 +1,1 @@
+export const LOADINGCOLOR = '#000000';
