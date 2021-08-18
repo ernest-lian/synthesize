@@ -6,12 +6,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { LOADINGCOLOR } from '../color/loading.js';
 
+import background from '../images/sunset.gif';
+
 const useStyles = makeStyles({
-  loadingText: {
-    color: '#E8E8E8',
-    fontSize: '50px',
-    fontFamily: 'Varela Round, sans-serif',
-  },
+  backgroundImage: {
+    backgroundImage: `url(${background})`,
+    backgroundSize: 'auto',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundColor: 'rgb(254,253,163)'
+  }
 });
 
 const Loading = ({
@@ -21,17 +25,12 @@ const Loading = ({
 
   return(
     <Box
+      className={classes.backgroundImage}
       display='flex'
       justifyContent='center'
       alignItems='center'
-      bgcolor={LOADINGCOLOR}
       height='inherit'
     >
-      <Typography
-        className={classes.loadingText}
-      >
-        LOADING...
-      </Typography>
     </Box>
     )
 }

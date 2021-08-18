@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import './App.css'; 
 import Loading from './user_interface/loading';
+import Home from './user_interface/home';
 
 function api(){
   return fetch("http://localhost:5000/testing", {
@@ -44,7 +45,7 @@ const App = ({
 
   return (
     <div className="App">
-      <Loading/>
+      <Home/>
     </div>
   );
 }
