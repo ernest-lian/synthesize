@@ -4,7 +4,7 @@ import {
   Button,
   TextField
 } from '@material-ui/core';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles, styled } from '@material-ui/core/styles';
 
 import { LOADINGCOLOR } from '../color/loading.js';
 
@@ -14,25 +14,29 @@ import '../styling/home.css';
 
 const useStyles = makeStyles({
   backgroundGradient: {
-    background: 'linear-gradient(to top, #b993d6, #8ca6db)'
-  },
-  logoBoxWrapper: {
-    borderTopLeftRadius: '20px',
-    borderBottomLeftRadius: '20px'
+    background: 'black'
   },
   loginBoxWrapper: {
-    borderTopRightRadius: '20px',
-    borderBottomRightRadius: '20px'
+    borderRadius: '20px'
   },
   loginButton: {
-    backgroundImage: 'linear-gradient(to right, #DAE2F8 0%, #D6A4A4  51%, #DAE2F8  100%)',
-    color: 'white'         
+   color: 'white'         
   },
   emailAddressText: {
     color: 'white'
   },
+  emailAddressInput: {
+    borderRadius: '20px',
+    background: '#C4C4C4'
+  },
   passwordText: {
-    color: 'white'
+    color: 'white',
+    fontFamily: 'Lato, sans-serif',
+    fontWeight: 500
+  },
+  passwordInput: {
+    borderRadius: '20px',
+    background: '#C4C4C4'
   }
 });
 
@@ -52,46 +56,80 @@ const Loading = ({
       <Box
         display='flex'
         flexDirection='row'
-        width='75%'
-        height='75%'
+        width='25%'
+        height='50%'
       >
         <Box
-          className={classes.logoBoxWrapper}
-          width='50%'
-          height='100%'
-          bgcolor='white'
-        >
-        </Box>
-        <Box
           className={classes.loginBoxWrapper}
-          width='50%'
+          width='100%'
           height='100%'
           bgcolor='white'
+          pl={5}
+          pr={5}
+          display='flex'
+          flexDirection='column'
+          justifyContent='space-around'
         >
           <Box
             display='flex'
-            flexDirection='column'
           >
-            <Typography
-              id='sign-in-text'
+              <Typography
+                id='synthesize-text'
+              >
+                synthesize
+              </Typography>
+          </Box>
+          <Box>
+            <Box
+              display='flex'
+              flexDirection='column'
             >
-              Sign In
-            </Typography>
-            <TextField
-              InputLabelProps={{ className: classes.emailAddressText}} 
-              label="Email" 
-              variant="filled" 
-            />
-            <TextField 
-              InputLabelProps={{ className: classes.passwordText}}
-              label="Password" 
-              variant="filled" 
-            />
-            <Typography>Forgot Your Password?</Typography>
-            <Button variant="contained" className={classes.loginButton} >CONTINUE</Button>
-
-            <Typography>Don't Have An Account?</Typography>
-            <Typography>Register Now</Typography>
+              <Typography
+                id='sign-in-text'
+              >
+                Sign In
+              </Typography>
+              <Box
+                pt={2}
+                pb={2}
+              >
+                <TextField
+                  InputLabelProps={{ 
+                    className: classes.emailAddressText
+                  }} 
+                  InputProps = {{
+                    className: classes.emailAddressInput
+                  }}
+                  label="Email" 
+                  variant="filled"
+                  fullWidth={true}
+                />
+              </Box>
+              <TextField 
+                InputLabelProps={{ className: classes.passwordText}}
+                InputProps = {{
+                  className: classes.passwordInput
+                }}
+                label="Password" 
+                variant="filled" 
+              />
+              <Box
+                component={Typography}
+                pt={2}
+                pb={2}
+                textAlign='left'
+                pl={2}
+              >
+                Forgot Your Password?
+              </Box>
+              <Button variant="contained" className={classes.loginButton} >CONTINUE</Button>
+            </Box>
+            <Box
+              pt={10}
+            >
+              <Typography>Don't Have An Account?</Typography>
+              <Typography>Register Now</Typography>
+            </Box>
           </Box>
         </Box>
       </Box>

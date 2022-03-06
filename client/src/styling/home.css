@@ -4,10 +4,23 @@
 	text-align: left;
 }
 
-#email-button {
+#email-button fieldset{
 	border-radius: 20px;
 }
 
 #password-button {
 	border-radius: 20px;
+}
+
+#synthesize-text {
+	background: black;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-align: left;
+	font-size: 30px;
+	font-family: 'Aldrich', sans-serif;
+}
+
+#synthesize-icon {
+	align-self: center;
 }
