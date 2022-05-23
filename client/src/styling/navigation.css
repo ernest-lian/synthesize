@@ -1,0 +1,19 @@
+#navigation{
+    display: flex;
+    flex-direction: column;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 75px;
+}
+
+#home-icon {
+    padding-top: 25px;
+}
+
+#remix-icon {
+    padding-top: 15px;
+}
+
+#library-icon {
+    padding-top: 15px;
+}

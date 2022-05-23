@@ -1,0 +1,8 @@
+#window {
+    border-radius: 15px;
+    background-color: black;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

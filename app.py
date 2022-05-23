@@ -3,10 +3,23 @@ from flask import Flask, request, render_template, jsonify
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 
+from ariadne import load_schema_from_path, make_executable_schema, \
+    graphql_sync, snake_case_fallback_resolvers, ObjectType
+from ariadne.constants import PLAYGROUND_HTML
+
 app = Flask(__name__, static_folder=os.path.abspath('./client/build/static'), template_folder='./client/build/static')
 CORS(app)
 api = Api(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+
+type_defs = load_schema_from_path("schema.graphql")
+schema = make_executable_schema(
+    type_defs, snake_case_fallback_resolvers
+)
+
+@app.route("/graphql", methods=["GET"])
+def graphql_playground():
+    return PLAYGROUND_HTML, 200
 
 @app.route('/')
 def index():

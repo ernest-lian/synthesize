@@ -1,0 +1,11 @@
+#remix-window {
+    background-color: black;
+    width: 100%;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+#remix {
+    background-color: white;
+    border-radius: 20px;
+}
