@@ -8,9 +8,6 @@ CORS(app)
 api = Api(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-from spleeter.separator import Separator
-from spleeter.audio.adapter import AudioAdapter
-
 @app.route("/")
 def hello_world():
     return "<p>Hello, World2!</p>"
