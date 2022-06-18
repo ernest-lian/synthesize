@@ -10,7 +10,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World2!</p>"
+    return render_template("index.html")
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
