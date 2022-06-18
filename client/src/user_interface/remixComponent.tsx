@@ -26,9 +26,8 @@ const RemixComponent: FunctionComponent<RemixComponentProps> = (props): ReactEle
           id='remix-number-cover'
         >
           <Typography id='number'>{props.number}</Typography>
-          <Box
+          <img
             id='song-cover-art'
-            component="img"
             src={props.cover}
           />
         </Box>
