@@ -8,6 +8,7 @@ import Navigation from './navigation';
 import Home from './home';
 import Remix from './remix';
 import Library from './library';
+import CurrentlyPlaying from './currentlyPlaying';
 
 import {
   BrowserRouter,
@@ -23,7 +24,10 @@ const Window = ({
     <Box
       id="window"
     >
-      <Navigation/>
+      <Box>
+        <CurrentlyPlaying/>
+        <Navigation/>
+      </Box>
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

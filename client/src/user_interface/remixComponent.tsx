@@ -23,11 +23,14 @@ const RemixComponent: FunctionComponent<RemixComponentProps> = (props): ReactEle
         id='song-information'
       >
         <Box
-          display='flex'
-          flexDirection='row'
+          id='remix-number-cover'
         >
           <Typography id='number'>{props.number}</Typography>
-          <Typography>{props.cover}</Typography>
+          <Box
+            id='song-cover-art'
+            component="img"
+            src={props.cover}
+          />
         </Box>
         <Box
           id='remix-title-artist'

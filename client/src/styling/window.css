@@ -3,7 +3,7 @@
 }
 
 #window {
-    background-color: yellow;
+    background-color: white;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -14,5 +14,6 @@
     #window {
         flex-direction:column-reverse;
         border: black 5px solid;
+        border-radius: 25px;
     }
   }

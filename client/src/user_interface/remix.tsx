@@ -8,6 +8,8 @@ import '../styling/remix.css';
 
 import RemixComponent from './remixComponent';
 
+import Ctrl from '../ctrl.jpg';
+
 const Remix = () => {  
   return(
     <Box
@@ -18,13 +20,13 @@ const Remix = () => {
         id='remix-container'
       >
         <RemixComponent 
-          number={1} cover="Cover" title="Title" artist="Artist"
+          number={1} cover={Ctrl} title="The Weekend" artist="Sza"
         />
         <RemixComponent 
-          number={2} cover="Cover" title="Title" artist="Artist"
+          number={2} cover={Ctrl} title="Life's Too Short" artist="Tinashe"
         />
         <RemixComponent 
-          number={3} cover="Cover" title="Title" artist="Artist"
+          number={3} cover={Ctrl} title="STUD" artist="Troye Sivan"
         />
       </Box>
     </Box>

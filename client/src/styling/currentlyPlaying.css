@@ -1,0 +1,18 @@
+#playing-cover-art {
+    padding-left: 15px;
+}
+
+@media only screen and (max-width: 800px) {
+#currently-playing{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: linear-gradient(#FCFBFB, #EFECEC);
+}
+}
+
+@media only screen and (min-width: 800px) {
+    #currently-playing{
+        display: none;
+    }
+}
