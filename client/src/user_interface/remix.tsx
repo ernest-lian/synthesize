@@ -1,52 +1,22 @@
 import { 
   Box,
-  Button
+  Button,
+  Typography
 } from '@material-ui/core';
 
 import '../styling/remix.css';
 
-import Navigation from './navigation';
+import RemixComponent from './remixComponent';
 
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-
-
-
-// const handleClick = () => {
-//   return fetch("http://localhost:5000/testing", {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       'value': 'ernest'
-//     })
-//   })
-//   .then(response => response.json())
-//   .then(data => {
-//     setText(data['name'])
-//     console.log('the data: ', data)
-//   }).catch(error => console.error('Error', error))
-// }
-
-const Remix = ({
-
-  
-    
-}) => {
-
+const Remix = () => {  
   return(
     <Box
       id='remix-window'
     >
-      <Box
-        id='remix'
-      >
-        <Button>Upload</Button>
-      </Box>
+      <Typography id='remixes'>Remixes</Typography>
+      <RemixComponent 
+        number={1} cover="Cover" title="Title" artist="Artist"
+      />
     </Box>
     )
 }

@@ -24,18 +24,19 @@ const Window = ({
       id="window"
     >
       <Navigation/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Routes>
-        <Route path="/home" element={<Home />} />
-      </Routes>
-      <Routes>
-        <Route path="/remix" element={<Remix />} />
-      </Routes>
-      <Routes>
-        <Route path="/library" element={<Library />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+        </Routes>
+        <Routes>
+          <Route path="/remix" element={<Remix />} />
+        </Routes>
+        <Routes>
+          <Route path="/library" element={<Library />} />
+        </Routes>
+
     </Box>
     )
 }

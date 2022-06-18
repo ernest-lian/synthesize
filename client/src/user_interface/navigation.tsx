@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 /* Material-UI */
-import { Box } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 
 /* Navigation icons */
 import HomeIcon from '@mui/icons-material/Home';
@@ -16,9 +16,7 @@ import { Link } from "react-router-dom";
 /* Styling */
 import '../styling/navigation.css';
 
-const Navigation = ({
-    
-}) => {
+const Navigation = () => {
   const [page, setPage] = useState('')
 
   const handleCurrentPage = (currentPage: string) => {
@@ -29,26 +27,16 @@ const Navigation = ({
   return(
     <Box
       id='navigation'
-    >
-      <Link 
-          to={'/home'}
-      >
-        <Box
-          onClick={()=> {handleCurrentPage('home')}}
-          id='home-icon'
-        >
-          <HomeIcon sx={{ color: "#1DB954" }}/>
-        </Box>
-      </Link>
-      
+    >     
       <Link 
           to={'/remix'}
       >
         <Box
           onClick={()=> {handleCurrentPage('remix')}}
-          id='remix-icon'
+          id='remix-icon-container'
         >
-        <MusicNoteIcon sx={{ color: "#1DB954" }}/>
+          <MusicNoteIcon id='remix-icon' fontSize="large"/>
+          <Typography id='navigation-remix'>Remix</Typography>
         </Box>
       </Link>
 
@@ -57,9 +45,10 @@ const Navigation = ({
       >
         <Box
           onClick={()=> {handleCurrentPage('library')}}
-          id='library-icon'
+          id='library-icon-container'
         >
-          <LibraryMusicIcon sx={{ color: "#1DB954" }}/>
+          <LibraryMusicIcon id='library-icon' fontSize="large"/>
+          <Typography id='navigation-library'>Library</Typography>
         </Box>
       </Link>
     </Box>

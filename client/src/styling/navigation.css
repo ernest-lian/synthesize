@@ -1,19 +1,74 @@
-#navigation{
-    display: flex;
-    flex-direction: column;
-    position: -webkit-sticky;
-    position: sticky;
-    width: 75px;
+#navigation-remix {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
 }
 
-#home-icon {
-    padding-top: 25px;
+#navigation-library {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
 }
 
-#remix-icon {
-    padding-top: 15px;
-}
+@media only screen and (max-width: 800px) {
+    #navigation{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        background-color: white;
+    }
 
-#library-icon {
-    padding-top: 15px;
+    #remix-icon-container {
+        padding-top: 15px;
+        display: flex;
+        flex-direction:column;
+    }
+
+    #remix-icon {
+        color: black;
+        align-self: center;
+    }
+
+    #library-icon-container {
+        padding-top: 15px;
+        display: flex;
+        flex-direction:column;
+    }
+
+    #library-icon {
+        color: black;
+        align-self: center;
+    }
+  }
+
+@media only screen and (min-width: 800px) {
+    #navigation{
+        display: flex;
+        flex-direction: column;
+        position: -webkit-sticky;
+        position: sticky;
+        width: 75px;
+    }
+    #navigation-remix {
+        display: none;
+    }
+
+    #navigation-library {
+        display: none;
+    }
+
+    #remix-icon-container {
+        padding-top: 15px;
+    }
+
+    #remix-icon {
+        color: #1DB954;
+    }
+    
+    #library-icon-container {
+        padding-top: 15px;
+    }
+
+    #library-icon {
+        color: #1DB954;
+    }
 }
