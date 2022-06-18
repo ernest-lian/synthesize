@@ -1,7 +1,6 @@
 #remix-window {
     background-color: white;
     width: 100%;
-    margin-right: 20px;
     margin-top: 20px;
 }
 
@@ -10,4 +9,11 @@
     font-size: 20px;
     text-align: left;
     font-weight: bold;
+    padding-left: 20px;
+}
+
+#remix-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }

@@ -14,9 +14,19 @@ const Remix = () => {
       id='remix-window'
     >
       <Typography id='remixes'>Remixes</Typography>
-      <RemixComponent 
-        number={1} cover="Cover" title="Title" artist="Artist"
-      />
+      <Box
+        id='remix-container'
+      >
+        <RemixComponent 
+          number={1} cover="Cover" title="Title" artist="Artist"
+        />
+        <RemixComponent 
+          number={2} cover="Cover" title="Title" artist="Artist"
+        />
+        <RemixComponent 
+          number={3} cover="Cover" title="Title" artist="Artist"
+        />
+      </Box>
     </Box>
     )
 }

@@ -1,13 +1,54 @@
 #remix-component {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 90%;
     height: 100px;
-    background-color: red;
+    background-color: white;
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #remix-title-artist {
     display: flex;
     flex-direction: column;
+}
+
+#number{
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#title {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#artist {
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+}
+
+.dot {
+    height: 5px;
+    width: 5px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+#dots {
+    display: flex;
+    flex-direction: column;
+}
+
+#song-information {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
