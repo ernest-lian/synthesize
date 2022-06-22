@@ -2,6 +2,15 @@
     padding-left: 15px;
 }
 
+#title {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#artist {
+    font-size: 12px;
+}
+
 @media only screen and (max-width: 800px) {
 #currently-playing{
     display: flex;

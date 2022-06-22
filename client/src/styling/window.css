@@ -13,7 +13,9 @@
 @media only screen and (max-width: 800px) {
     #window {
         flex-direction:column-reverse;
-        border: black 5px solid;
-        border-radius: 25px;
+        border: black 1px solid;
+        height: 95%;
+        width: 95%;
+        box-shadow: 5px 5px;
     }
   }
