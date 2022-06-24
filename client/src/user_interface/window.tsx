@@ -5,7 +5,6 @@ import {
 import '../styling/window.css';
 
 import Navigation from './navigation';
-import Home from './home';
 import Remix from './remix';
 import Library from './library';
 import CurrentlyPlaying from './currentlyPlaying';
@@ -29,10 +28,7 @@ const Window = ({
         <Navigation/>
       </Box>
         <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Remix />} />
         </Routes>
         <Routes>
           <Route path="/remix" element={<Remix />} />

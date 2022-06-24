@@ -30,7 +30,7 @@ const Navigation = () => {
     >     
       <Link 
           to={'/remix'}
-          style={{ textDecoration: 'none' }}
+          style={{ textDecoration: 'none', color: 'black' }}
       >
         <Box
           onClick={()=> {handleCurrentPage('remix')}}
@@ -43,7 +43,7 @@ const Navigation = () => {
 
       <Link 
           to={'/library'}
-          style={{ textDecoration: 'none' }}
+          style={{ textDecoration: 'none',  color: 'black' }}
       >
         <Box
           onClick={()=> {handleCurrentPage('library')}}

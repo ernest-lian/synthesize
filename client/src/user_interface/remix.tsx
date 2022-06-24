@@ -4,8 +4,14 @@ import {
   Typography
 } from '@material-ui/core';
 
+import Slider from "@mui/material/Slider";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDrum, faMicrophoneLines, faGuitar, faMusic } from '@fortawesome/free-solid-svg-icons'
+
 import '../styling/remix.css';
 
+import RemixPlaying from './remixPlaying';
 import RemixComponent from './remixComponent';
 
 import Ctrl from '../ctrl.jpg';
@@ -15,49 +21,67 @@ const Remix = () => {
     <Box
       id='remix-window'
     >
-      <Typography id='remixes'>Remixes</Typography>
+      <Typography id='stem-remix'>Stem Remix</Typography>
+      <RemixPlaying cover={Ctrl}/>
       <Box
-        id='remix-container'
+        id='sliders'
       >
-        <RemixComponent 
-          number={1} cover={Ctrl} title="The Weekend" artist="Sza"
-        />
-        <RemixComponent 
-          number={2} cover={Ctrl} title="Life's Too Short" artist="Tinashe"
-        />
-        <RemixComponent 
-          number={3} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={4} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={5} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={6} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={7} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={8} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={9} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={10} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={11} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={12} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={13} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
+            <Typography id='slider-text'>Vocals</Typography>
+          </Box>
+          <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ width: '85%', color: '#1DB954' }}/>
+        </Box>
+
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faDrum} className='icon'/>
+            <Typography id='slider-text'>Drums</Typography>
+          </Box>
+          <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ width: '85%', color: '#1DB954' }}/>
+        </Box>  
+        
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faGuitar} className='icon'/>
+            <Typography id='slider-text'>Bass</Typography>
+          </Box>
+          <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ width: '85%', color: '#1DB954' }}/>
+        </Box>
+        
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faMusic} className='icon'/>
+            <Typography id='slider-text'>Other</Typography>
+          </Box>
+          <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ width: '85%', color: '#1DB954' }}/>
+        </Box>
+
       </Box>
     </Box>
     )

@@ -6,6 +6,8 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import '../styling/currentlyPlaying.css';
 
 
+import Ctrl from '../ctrl.jpg';
+
 const CurrentlyPlaying = () => {
   const [playing, setPlaying] = useState(false);
 
@@ -17,19 +19,22 @@ const CurrentlyPlaying = () => {
       id='currently-playing'
     >
       <Box
-      
+        display='flex'
+        flexDirection='row'
       >
-        <Box
-          id='playing-cover-art'
-          component="img"
-        />
+        <img
+            id='currently-playing-cover-art'
+            src={Ctrl}
+          />
         <Box
           display='flex'
           flexDirection='column'
+          alignSelf='center'
+          pl={1}
           textAlign='left'
         >
-          <Typography id='title'>Title</Typography>
-          <Typography id='artist'>Artist</Typography>
+          <Typography id='title'>better off</Typography>
+          <Typography id='artist'>Ariana Grande</Typography>
         </Box>
       </Box>
       {playing ? <PlayArrowIcon onClick = {() => handleSetPlaying} style={{ color: '#1DB954'}}/> : <PauseIcon onClick = {() => handleSetPlaying} style={{ 'alignSelf': 'center', color: '#1DB954'}}/>}
