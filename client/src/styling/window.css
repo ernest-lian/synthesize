@@ -14,6 +14,7 @@
         width: 90%;
         height: 90%;
         border-radius: 20px;
+        overflow-y:scroll;
     }
 }
 
@@ -28,5 +29,10 @@
         box-shadow: 5px 5px;
         height: 95%;
         width: 95%;
+        overflow-y:scroll;
+    }
+
+    #playing-and-navigation-container {
+        border-left: black 1px solid;
     }
   }

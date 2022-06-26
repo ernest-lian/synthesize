@@ -33,7 +33,9 @@ const Window = () => {
             <Route path="/library" element={<Library />} />
           </Routes>
       </Box>
-      <Box>
+      <Box
+        id='playing-and-navigation-container'
+      >
         <CurrentlyPlaying/>
         <Navigation/>
       </Box>
