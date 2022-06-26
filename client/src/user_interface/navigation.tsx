@@ -1,11 +1,10 @@
 /* React */
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 /* Material-UI */
 import { Box, Typography } from '@material-ui/core';
 
 /* Navigation icons */
-import HomeIcon from '@mui/icons-material/Home';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 
@@ -20,7 +19,7 @@ const Navigation = () => {
   const [page, setPage] = useState('')
 
   const handleCurrentPage = (currentPage: string) => {
-    console.log("setting page to " + currentPage);
+    console.log("setting page to " + page);
     setPage(currentPage)
   }
 
@@ -36,7 +35,7 @@ const Navigation = () => {
           onClick={()=> {handleCurrentPage('remix')}}
           id='remix-icon-container'
         >
-          <MusicNoteIcon id='remix-icon' fontSize="large"/>
+          <MusicNoteIcon id='remix-icon' fontSize="medium"/>
           <Typography id='navigation-remix'>Remix</Typography>
         </Box>
       </Link>
@@ -49,7 +48,7 @@ const Navigation = () => {
           onClick={()=> {handleCurrentPage('library')}}
           id='library-icon-container'
         >
-          <LibraryMusicIcon id='library-icon' fontSize="large"/>
+          <LibraryMusicIcon id='library-icon' fontSize="medium"/>
           <Typography id='navigation-library'>Library</Typography>
         </Box>
       </Link>

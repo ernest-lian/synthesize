@@ -25,6 +25,7 @@ const CurrentlyPlaying = () => {
         <img
             id='currently-playing-cover-art'
             src={Ctrl}
+            alt="Cover art of currently playing track"
           />
         <Box
           display='flex'

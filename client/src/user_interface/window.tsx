@@ -5,38 +5,38 @@ import {
 import '../styling/window.css';
 
 import Navigation from './navigation';
-import Remix from './remix';
-import Library from './library';
+import Remix from './remix/stemRemix';
+import Library from './library/library';
 import CurrentlyPlaying from './currentlyPlaying';
 
 import {
-  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
 
-const Window = ({
-    
-}) => {
+const Window = () => {
 
   return(
     <Box
-      id="window"
+      id='window-container'
     >
+      <Box
+        id="window"
+      >
+          <Routes>
+            <Route path="/" element={<Remix />} />
+          </Routes>
+          <Routes>
+            <Route path="/remix" element={<Remix />} />
+          </Routes>
+          <Routes>
+            <Route path="/library" element={<Library />} />
+          </Routes>
+      </Box>
       <Box>
         <CurrentlyPlaying/>
         <Navigation/>
       </Box>
-        <Routes>
-          <Route path="/" element={<Remix />} />
-        </Routes>
-        <Routes>
-          <Route path="/remix" element={<Remix />} />
-        </Routes>
-        <Routes>
-          <Route path="/library" element={<Library />} />
-        </Routes>
-
     </Box>
     )
 }
