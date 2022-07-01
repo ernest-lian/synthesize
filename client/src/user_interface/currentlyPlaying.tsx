@@ -11,7 +11,10 @@ import Ctrl from '../ctrl.jpg';
 const CurrentlyPlaying = () => {
   const [playing, setPlaying] = useState(false);
 
-  const handleSetPlaying = () => setPlaying(!playing);
+  const handleSetPlaying = () => {
+    console.log(!playing!)
+    setPlaying(!playing)
+  };
 
 
   return(
@@ -38,7 +41,7 @@ const CurrentlyPlaying = () => {
           <Typography id='artist'>Ariana Grande</Typography>
         </Box>
       </Box>
-      {playing ? <PlayArrowIcon onClick = {() => handleSetPlaying} style={{ color: '#1DB954'}}/> : <PauseIcon onClick = {() => handleSetPlaying} style={{ 'alignSelf': 'center', color: '#1DB954'}}/>}
+      {playing ? <PlayArrowIcon onClick = {() => handleSetPlaying()} style={{ 'alignSelf': 'center', color: '#1DB954'}}/> : <PauseIcon onClick = {() => handleSetPlaying()} style={{ 'alignSelf': 'center', color: '#1DB954'}}/>}
     </Box>
     )
 }

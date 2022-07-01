@@ -3,11 +3,11 @@ import { useState } from 'react';
 
 /* Material-UI */
 import { Box, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 /* Navigation icons */
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
-
 
 /* Router */
 import { Link } from "react-router-dom";
@@ -15,8 +15,21 @@ import { Link } from "react-router-dom";
 /* Styling */
 import '../styling/navigation.css';
 
+const styles = makeStyles({
+  selectedNavigation: {
+      "background-color": "white",
+      "border-radius": "20px",
+      "padding": "5px"
+  },
+  nonSelectedNavigation: {
+    "border-radius": "20px",
+    "padding": "5px"
+  }
+});
+
 const Navigation = () => {
-  const [page, setPage] = useState('')
+  const classes = styles();
+  const [page, setPage] = useState('remix')
 
   const handleCurrentPage = (currentPage: string) => {
     console.log("setting page to " + page);
@@ -35,7 +48,7 @@ const Navigation = () => {
           onClick={()=> {handleCurrentPage('remix')}}
           id='remix-icon-container'
         >
-          <MusicNoteIcon id='remix-icon' fontSize="medium"/>
+          <MusicNoteIcon id='remix-icon' className={(page === 'remix') ? classes.selectedNavigation : classes.nonSelectedNavigation} fontSize="medium"/>
           <Typography id='navigation-remix'>Remix</Typography>
         </Box>
       </Link>
@@ -48,7 +61,7 @@ const Navigation = () => {
           onClick={()=> {handleCurrentPage('library')}}
           id='library-icon-container'
         >
-          <LibraryMusicIcon id='library-icon' fontSize="medium"/>
+          <LibraryMusicIcon id='library-icon' className={(page === 'library') ? classes.selectedNavigation : classes.nonSelectedNavigation} fontSize="medium"/>
           <Typography id='navigation-library'>Library</Typography>
         </Box>
       </Link>

@@ -1,15 +1,26 @@
+@media only screen and (max-width: 800px) {
+    #remix-component {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #remix-component {
+        width: 100%;
+    }
+}
+
 #remix-component {
     display: flex;
     flex-direction: row;
-    width: 85%;
+    align-items: center;
+    justify-content: space-between;
     height: 75px;
     background-color: white;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding-left: 10px;
     padding-right: 10px;
-    align-items: center;
-    justify-content: space-between;
     margin-top: 10px;
 }
 
