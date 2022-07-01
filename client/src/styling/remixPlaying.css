@@ -1,4 +1,10 @@
 @media only screen and (max-width: 800px) {
+    #remix-playing-cover {
+        border-radius: 10px;
+        height: 125px;
+        width: 125px;
+    }
+
     #remix-creator {
         display: flex;
         flex-direction: row;
@@ -46,5 +52,43 @@
         font-family: 'Lato', sans-serif;
         align-self: center;
         padding-left: 5px;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #remix-playing-cover {
+        border-radius: 10px;
+        height: 300px;
+        width: 300px;
+    }
+
+    #remix-playing-title {
+        font-size: 30px;
+        font-family: 'Lato', sans-serif;
+    }
+
+    #remix-playing-artist {
+        font-size: 40px;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+    }
+
+    #remix-creator {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #remix-information {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        justify-content: center;
+    }
+
+    #remix-playing {
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 20px;
+        border-radius: 20px;
     }
 }

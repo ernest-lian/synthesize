@@ -20,66 +20,69 @@ const stemRemix = () => {
       id='remix-window'
     >
       <Typography id='stem-remix'>Stem Remix</Typography>
-      <RemixPlaying cover={Ctrl}/>
       <Box
-        id='sliders'
+        id='remix-and-sliders'
       >
+        <RemixPlaying cover={Ctrl}/>
         <Box
-          className='slider'
+          id='sliders'
         >
           <Box
-            display='flex'
-            flexDirection='column'
-            p={2}
+            className='slider'
           >
-            <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
-            <Typography id='slider-text'>Vocals</Typography>
+            <Box
+              display='flex'
+              flexDirection='column'
+              p={2}
+            >
+              <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
+              <Typography id='slider-text'>Vocals</Typography>
+            </Box>
+            <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }}/>
           </Box>
-          <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ width: '70%', color: '#1DB954' }}/>
-        </Box>
 
-        <Box
-          className='slider'
-        >
           <Box
-            display='flex'
-            flexDirection='column'
-            p={2}
+            className='slider'
           >
-            <FontAwesomeIcon icon={faDrum} className='icon'/>
-            <Typography id='slider-text'>Drums</Typography>
-          </Box>
-          <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ width: '70%', color: '#1DB954' }}/>
-        </Box>  
-        
-        <Box
-          className='slider'
-        >
+            <Box
+              display='flex'
+              flexDirection='column'
+              p={2}
+            >
+              <FontAwesomeIcon icon={faDrum} className='icon'/>
+              <Typography id='slider-text'>Drums</Typography>
+            </Box>
+            <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }}/>
+          </Box>  
+          
           <Box
-            display='flex'
-            flexDirection='column'
-            p={2}
+            className='slider'
           >
-            <FontAwesomeIcon icon={faGuitar} className='icon'/>
-            <Typography id='slider-text'>Bass</Typography>
+            <Box
+              display='flex'
+              flexDirection='column'
+              p={2}
+            >
+              <FontAwesomeIcon icon={faGuitar} className='icon'/>
+              <Typography id='slider-text'>Bass</Typography>
+            </Box>
+            <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }}/>
           </Box>
-          <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ width: '70%', color: '#1DB954' }}/>
+          
+          <Box
+            className='slider'
+          >
+            <Box
+              display='flex'
+              flexDirection='column'
+              p={2}
+            >
+              <FontAwesomeIcon icon={faMusic} className='icon'/>
+              <Typography id='slider-text'>Other</Typography>
+            </Box>
+            <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }}/>
+          </Box>
         </Box>
-        
-        <Box
-          className='slider'
-        >
-          <Box
-            display='flex'
-            flexDirection='column'
-            p={2}
-          >
-            <FontAwesomeIcon icon={faMusic} className='icon'/>
-            <Typography id='slider-text'>Other</Typography>
-          </Box>
-          <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ width: '70%', color: '#1DB954' }}/>
-        </Box>
-
       </Box>
     </Box>
     )

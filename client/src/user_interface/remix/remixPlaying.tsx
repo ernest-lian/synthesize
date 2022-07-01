@@ -17,7 +17,7 @@ const RemixPlaying: FunctionComponent<RemixPlayingProps> = (props): ReactElement
       id='remix-playing'
     >
       <img
-        style={{ borderRadius: '10px', height: '125px', width: '125px'}}
+        id='remix-playing-cover'
         src={props.cover}
         alt='Cover art of current remix'
       />
