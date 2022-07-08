@@ -12,8 +12,9 @@ import Ctrl from '../../ctrl.jpg';
 const Library = () => {  
   return(
     <Box
-      id='remix-window'
+      id='library-window'
     >
+      <Typography id='remixes-navigation'> Remixes </Typography>
       <Typography id='remixes'>Remixes</Typography>
       <Box
         id='remix-container'

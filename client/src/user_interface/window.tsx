@@ -7,7 +7,8 @@ import '../styling/window.css';
 import Navigation from './navigation';
 import Remix from './remix/stemRemix';
 import Library from './library/library';
-import CurrentlyPlaying from './currentlyPlaying';
+import CurrentlyPlayingMobile from './currentlyPlayingMobile';
+import CurrentlyPlayingDesktop from './currentlyPlayingDesktop';
 
 import {
   Routes,
@@ -23,20 +24,21 @@ const Window = () => {
       <Box
         id="window"
       >
-          <Routes>
-            <Route path="/" element={<Remix />} />
-          </Routes>
-          <Routes>
-            <Route path="/remix" element={<Remix />} />
-          </Routes>
-          <Routes>
-            <Route path="/library" element={<Library />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Remix />} />
+        </Routes>
+        <Routes>
+          <Route path="/remix" element={<Remix />} />
+        </Routes>
+        <Routes>
+          <Route path="/library" element={<Library />} />
+        </Routes>
+        <CurrentlyPlayingDesktop/>
       </Box>
       <Box
         id='playing-and-navigation-container'
       >
-        <CurrentlyPlaying/>
+        <CurrentlyPlayingMobile/>
         <Navigation/>
       </Box>
     </Box>

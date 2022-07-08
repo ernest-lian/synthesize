@@ -9,10 +9,10 @@
 @media only screen and (min-width: 800px) {
     #remix-window {
         background-color: #ffffff;
-        width: 100%;
         margin: 20px 20px 20px 0px;
         border-radius: 20px;
         padding: 20px;
+        height: 90%;
     }
 
     #remix-and-sliders {
