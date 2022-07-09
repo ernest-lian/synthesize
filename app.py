@@ -3,8 +3,8 @@ from flask import Flask, request, render_template, jsonify
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS
 
-from spleeter.separator import Separator
-from spleeter.audio.adapter import AudioAdapter
+# from spleeter.separator import Separator
+# from spleeter.audio.adapter import AudioAdapter
 
 app = Flask(__name__, static_folder=os.path.abspath('./client/build/static'), template_folder='./client/build/static')
 CORS(app)
