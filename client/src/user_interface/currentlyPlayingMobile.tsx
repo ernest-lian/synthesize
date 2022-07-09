@@ -16,6 +16,7 @@ const CurrentlyPlayingMobile = () => {
 
 
   const handleSetPlaying = () => {
+    console.log('mobile set playing');
     setPlaying(!playing)
     var music = new Audio(drive);
     music.play();

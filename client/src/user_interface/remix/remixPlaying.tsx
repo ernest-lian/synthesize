@@ -35,7 +35,7 @@ const RemixPlaying: FunctionComponent<RemixPlayingProps> = (props): ReactElement
       >
         <Typography id='remix-playing-title'>test drive</Typography>
         <Typography id='remix-playing-artist'>Ariana Grande</Typography>
-        <Slider aria-label="Play time" defaultValue={0} valueLabelDisplay="auto" style={{ color: '#1DB954' }}/>
+        <Slider id='remix-playing-time' aria-label="Play time" defaultValue={0} valueLabelDisplay="auto" style={{ color: '#1DB954' }}/>
         <Typography id='remix-playing-time'>2min 02 secs</Typography>
       <Box
         id='remix-creator'
