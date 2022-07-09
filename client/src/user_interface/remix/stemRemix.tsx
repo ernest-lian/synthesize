@@ -80,7 +80,7 @@ const stemRemix = () => {
               <FontAwesomeIcon icon={faMusic} className='icon'/>
               <Typography id='slider-text'>Other</Typography>
             </Box>
-            <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }}/>
+            <Slider defaultValue={0} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }}/>
           </Box>
         </Box>
       </Box>

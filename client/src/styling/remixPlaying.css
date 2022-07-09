@@ -43,7 +43,7 @@
     }
     
     #remix-playing-time {
-        font-size: 10px;
+        font-size: 12px;
         font-family: 'Lato', sans-serif;
     }
     
@@ -58,8 +58,8 @@
 @media only screen and (min-width: 800px) {
     #remix-playing-cover {
         border-radius: 10px;
-        height: 300px;
-        width: 300px;
+        height: 400px;
+        width: 400px;
     }
 
     #remix-playing-title {
@@ -76,6 +76,7 @@
     #remix-creator {
         display: flex;
         flex-direction: row;
+        padding-top: 10px;
     }
 
     #remix-information {
@@ -90,5 +91,37 @@
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         padding: 20px;
         border-radius: 20px;
+        height:100%;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #remix-playing-time {
+        font-size: 12px;
+        font-family: 'Lato', sans-serif;
+    }
+    
+    #remix-playing-creator {
+        font-size: 12px;
+        font-family: 'Lato', sans-serif;
+        align-self: center;
+        padding-left: 5px;
+    }
+
+    #favorite-border-icon{
+        background-color: white;
+        color: #1db954;
+        align-self: center;
+    }
+
+    #favorite-icon {
+        color: #1db954;
+        align-self:center;
+    }
+
+    #remix-creator-icon{
+        align-self: center;
     }
 }

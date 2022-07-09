@@ -43,9 +43,6 @@ const Library = () => {
         <RemixComponent 
           number={8} cover={Ctrl} title="STUD" artist="Troye Sivan"
         />
-        <RemixComponent 
-          number={9} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
       </Box>
     </Box>
     )

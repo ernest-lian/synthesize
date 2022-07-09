@@ -48,6 +48,7 @@
         position: -webkit-sticky;
         position: sticky;
         width: 75px;
+        padding-top: 20px;
     }
     #navigation-remix {
         display: none;
