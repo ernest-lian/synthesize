@@ -8,37 +8,18 @@ import '../styling/currentlyPlayingMobile.css';
 
 import Ctrl from '../ctrl.jpg';
 
+import drive from './test_drive.mp3';
+
 
 const CurrentlyPlayingMobile = () => {
   const [playing, setPlaying] = useState(false);
 
+
   const handleSetPlaying = () => {
-    // console.log(localStorage.getItem('remixName'));
-
-    // var audio = new Audio('../../output/test_drive/other.wav');
-    // audio.crossOrigin = 'anonymous';
-
-    // console.log(audio);
-
-    // audio.play();
-
-    // audio.addEventListener("canplay", function() {
-    //   console.log('aespa');
-    //   var audioPromise = audio.play();
-
-    //   if (audioPromise !== undefined) {
-    //     audioPromise.then(function() {
-    //       console.log("Play suceess");
-    //     }).catch(function(error) {
-    //       console.log("Play failed");
-    //     });
-    //   }
-    // })
-
-
     setPlaying(!playing)
+    var music = new Audio(drive);
+    music.play();
   };
-
 
   return(
     <Box
