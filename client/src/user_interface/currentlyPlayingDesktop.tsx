@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import  { useState, ChangeEvent, useRef } from 'react';
 import { Box, Typography, Slider } from '@material-ui/core';
 
 import PauseIcon from '@mui/icons-material/Pause';
@@ -20,15 +20,29 @@ import drive from './test_drive.mp3';
 const CurrentlyPlayingDesktop = () => {
   const [playing, setPlaying] = useState(false);
   const [favorite, setFavorite] = useState(false);
+  const [volume, setVolume] = useState(0);
 
+  const audioRef = useRef(new Audio(drive));
   const handleSetPlaying = () => {
+    if (playing) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    
     setPlaying(!playing)
-    var music = new Audio(drive);
-    music.play();
+    // audioRef.current.play();
+
   };
 
   const handleSetFavorite = () => {
     setFavorite(!favorite)
+  };
+
+  const handleVolumeChange = (event: ChangeEvent<{}>, newValue: number | number[]) => {
+    setVolume(newValue as number);
+    var okay: number = Math.round(newValue as number/100)
+    audioRef.current.volume = okay
   };
 
 
@@ -72,7 +86,7 @@ const CurrentlyPlayingDesktop = () => {
           <ShuffleIcon id='shuffle-icon' />
           <SkipPreviousIcon id='skip-previous-icon' />
           
-          {playing ? <PlayArrowIcon id='play-arrow-icon' onClick = {() => handleSetPlaying()} /> : <PauseIcon id='pause-icon' onClick = {() => handleSetPlaying()} />}
+          {playing ? <PauseIcon id='pause-icon' onClick = {() => handleSetPlaying()} /> : <PlayArrowIcon id='play-arrow-icon' onClick = {() => handleSetPlaying()} />}
           
           <SkipNextIcon id='skip-next-icon' />    
           <ReplayIcon id='replay-icon' />
@@ -88,7 +102,7 @@ const CurrentlyPlayingDesktop = () => {
         <Box
           id='volume-level'
         >
-          <Slider defaultValue={50} aria-label="Volume" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }}/>
+          <Slider value={volume} defaultValue={50} aria-label="Volume" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }} onChange={handleVolumeChange}/>
         </Box>
       </Box>
     </Box>

@@ -14,6 +14,8 @@ import drive from './test_drive.mp3';
 const CurrentlyPlayingMobile = () => {
   const [playing, setPlaying] = useState(false);
 
+  const [volume, setVolume] = useState(50);
+
 
   const handleSetPlaying = () => {
     console.log('mobile set playing');
