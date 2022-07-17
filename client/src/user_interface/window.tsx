@@ -33,7 +33,6 @@ const Window = () => {
         <Routes>
           <Route path="/library" element={<Library />} />
         </Routes>
-        <CurrentlyPlayingDesktop/>
       </Box>
       <Box
         id='playing-and-navigation-container'

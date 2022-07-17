@@ -35,22 +35,6 @@
         padding-right: 50px;
    }
 
-   #play-arrow-icon {
-        align-self: center;
-        color: #ffffff;
-        background-color: black;
-        border-radius: 25px;
-        padding: 5px;
-    }
-
-    #pause-icon {
-        align-self: center;
-        color: #ffffff;
-        background-color: black;
-        border-radius: 25px;
-        padding: 5px;
-    }
-
     #skip-previous-icon {
         align-self: center;
         color: #C4C4C4;

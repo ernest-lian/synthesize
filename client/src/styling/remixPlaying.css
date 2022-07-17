@@ -57,6 +57,22 @@
     #remix-playing-time{
         display: none;
     }
+
+    #play-arrow-icon {
+        align-self: center;
+        color: #ffffff;
+        background-color: #1db954;
+        border-radius: 25px;
+        padding: 5px;
+    }
+
+    #pause-icon {
+        align-self: center;
+        color: #ffffff;
+        background-color: #1db954;
+        border-radius: 25px;
+        padding: 5px;
+    }
 }
 
 @media only screen and (min-width: 800px) {
@@ -127,5 +143,21 @@
 
     #remix-creator-icon{
         align-self: center;
+    }
+
+    #play-arrow-icon {
+        align-self: center;
+        color: #ffffff;
+        background-color: #1db954;
+        border-radius: 25px;
+        padding: 5px;
+    }
+
+    #pause-icon {
+        align-self: center;
+        color: #ffffff;
+        background-color: #1db954;
+        border-radius: 25px;
+        padding: 5px;
     }
 }

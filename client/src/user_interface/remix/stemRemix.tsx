@@ -1,4 +1,4 @@
-import  { useRef, useState, ChangeEvent } from 'react';
+import  React, { useRef, useState, ChangeEvent, useEffect } from 'react';
 import { 
   Box,
   Typography,
@@ -12,7 +12,10 @@ import { faDrum, faMicrophoneLines, faGuitar, faMusic } from '@fortawesome/free-
 
 import '../../styling/stemRemix.css';
 
-import RemixPlaying from './remixPlaying';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import PauseIcon from '@mui/icons-material/Pause';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import Ctrl from '../../ctrl.jpg';
 
@@ -20,66 +23,135 @@ import vocals from './../vocals.wav';
 import bass from './../bass.wav';
 import other from './../other.wav';
 import drums from './../drums.wav';
+import { ConstructionOutlined, VolumeDown } from '@mui/icons-material';
 
 const StemRemix = () => {  
-  const vocalsRef = useRef(new Audio(vocals));
-  const bassRef = useRef(new Audio(bass));
-  const otherRef = useRef(new Audio(other));
-  const drumsRef = useRef(new Audio(drums));
+    const [favorite, setFavorite] = useState(false);
+    const [playing, setPlaying] = useState(false);
+
+    const audioContext = new AudioContext();
+
+    const otherAudio = new Audio(other);
+    const otherGainNode = new GainNode(audioContext, { gain: 0.5});
+    const otherVolume = document.getElementById("volume")!;
+
+    const vocalAudio = new Audio(vocals);
+    const vocalGainNode = new GainNode(audioContext, { gain: 0.5});
+    const vocalVolume = document.getElementById("vocal-volume")!;
+
+    const bassAudio = new Audio(bass);
+    const bassGainNode = new GainNode(audioContext, { gain: 0.5});
+    const bassVolume = document.getElementById("bass-volume")!;
+
+    const drumsAudio = new Audio(drums);
+    const drumsGainNode = new GainNode(audioContext, { gain: 0.5});
+    const drumsVolume = document.getElementById("drums-volume")!;
 
 
-  const [playing, setPlaying] = useState(false);
+    setupEventListeners()
+    setupContext()
 
-  const [vocalsVolume, setVocalsVolume] = useState(0);
-  const [bassVolume, setBassVolume] = useState(0);
-  const [drumsVolume, setDrumsVolume] = useState(0);
-  const [otherVolume, setOtherVolume] = useState(0);
+    async function setupContext() {
+      const track = audioContext.createMediaElementSource(otherAudio);
+      track.connect(otherGainNode).connect(audioContext.destination)
 
+      const vocalTrack = audioContext.createMediaElementSource(vocalAudio);
+      vocalTrack.connect(vocalGainNode).connect(audioContext.destination);
 
-  const handleSetPlaying = () => {
-    setPlaying(!playing)
+      const bassTrack = audioContext.createMediaElementSource(bassAudio);
+      bassTrack.connect(bassGainNode).connect(audioContext.destination);
 
-    vocalsRef.current.play();
-    bassRef.current.play();
-    drumsRef.current.play();
-    otherRef.current.play();
+      const drumsTrack = audioContext.createMediaElementSource(drumsAudio);
+      drumsTrack.connect(drumsGainNode).connect(audioContext.destination);
+    }
 
-  };
+    const handleSetPlaying = () => {
+      setPlaying(!playing)
+      vocalAudio.play();
+      bassAudio.play();
+      drumsAudio.play();
+      otherAudio.play();
+    }
 
-  const handleVocalsVolumeChange = (event: Event, newValue: number | number[]) => {
-    setVocalsVolume(newValue as number);
-    var okay: number = Math.round(newValue as number/100)
-    vocalsRef.current.volume = okay
-  };
+    const handleSetFavorite = () => {
+      setFavorite(!favorite)
+    };
 
-  const handleBassVolumeChange = (event: Event, newValue: number | number[]) => {
-    setBassVolume(newValue as number);
-    var okay: number = Math.round(newValue as number/100)
-    bassRef.current.volume = okay
-  };
+    async function setupEventListeners(){
+      otherVolume?.addEventListener('input', event => {
+        const element = event.target as HTMLInputElement
+        console.log(parseFloat(element.value))
+        otherGainNode.gain.value = parseFloat(element.value)
+      })
 
-  const handleDrumsVolumeChange = (event: Event, newValue: number | number[]) => {
-    setDrumsVolume(newValue as number);
-    var okay: number = Math.round(newValue as number/100)
-    drumsRef.current.volume = okay
-  };
+      vocalVolume?.addEventListener('input', event => {
+        const element = event.target as HTMLInputElement
+        console.log(parseFloat(element.value))
+        vocalGainNode.gain.value = parseFloat(element.value)
+      })
 
-  const handleOtherVolumeChange = (event: Event, newValue: number | number[]) => {
-    setOtherVolume(newValue as number);
-    var okay: number = Math.round(newValue as number/100)
-    otherRef.current.volume = okay
-  };
+      bassVolume?.addEventListener('input', event => {
+        const element = event.target as HTMLInputElement
+        console.log(parseFloat(element.value))
+        bassGainNode.gain.value = parseFloat(element.value)
+      })
+
+      drumsVolume?.addEventListener('input', event => {
+        const element = event.target as HTMLInputElement
+        console.log(parseFloat(element.value))
+        drumsGainNode.gain.value = parseFloat(element.value)
+      })
+    }
 
   return(
     <Box
       id='remix-window'
     >
-      <Button onClick={()=> handleSetPlaying()}>hello</Button>
       <Typography id='stem-remix'>Stem Remix</Typography>
       <Box
         id='remix-and-sliders'
       >
-        <RemixPlaying cover={Ctrl}/>
+        <Box
+      id='remix-playing'
+    >
+      <img
+        id='remix-playing-cover'
+        src={Ctrl}
+        alt='Cover art of current remix'
+      />
+      <Box
+        id='remix-information'
+      >
+        <Box
+          display='flex'
+          flexDirection='row'
+          justifyContent='space-between'
+        >
+          <Box>
+            <Typography id='remix-playing-title'>test drive</Typography>
+            <Typography id='remix-playing-artist'>Ariana Grande</Typography>
+          </Box>
+          {playing ? <PauseIcon id='pause-icon' onClick = {() => handleSetPlaying()} /> : <PlayArrowIcon id='play-arrow-icon' onClick = {() => handleSetPlaying()} />}
+        </Box>
+        <Slider id='remix-playing-time' aria-label="Play time" defaultValue={0} valueLabelDisplay="auto" style={{ color: '#1DB954' }}/>
+        <Typography id='remix-playing-time'>2min 02 secs</Typography>
+      <Box
+        id='remix-creator'
+      >
+        {favorite ? <FavoriteIcon id='favorite-icon' onClick = {() => handleSetFavorite()} /> : <FavoriteBorderIcon id='favorite-border-icon' onClick = {() => handleSetFavorite()} />}
+        <img
+          style={{ borderRadius: '20px', height: '20px', width: '20px'}}
+          src={Ctrl}
+          alt='User profile of remix creator'
+          id='remix-creator-icon'
+        />
+        <Typography id='remix-playing-creator'>ernest</Typography>
+      </Box>
+      </Box>
+    </Box>
+
+
+
         <Box
           id='sliders'
         >
@@ -94,7 +166,7 @@ const StemRemix = () => {
               <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
               <Typography id='slider-text'>Vocals</Typography>
             </Box>
-            <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }} onChange={handleVocalsVolumeChange}/>
+            <input type="range" id="vocal-volume" min="0" max="1" step="0.01"/>
           </Box>
 
           <Box
@@ -108,7 +180,7 @@ const StemRemix = () => {
               <FontAwesomeIcon icon={faDrum} className='icon'/>
               <Typography id='slider-text'>Drums</Typography>
             </Box>
-            <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }} onChange={handleDrumsVolumeChange}/>
+            <input type="range" id="drums-volume" min="0" max="1" step="0.01"/>
           </Box>  
           
           <Box
@@ -122,7 +194,7 @@ const StemRemix = () => {
               <FontAwesomeIcon icon={faGuitar} className='icon'/>
               <Typography id='slider-text'>Bass</Typography>
             </Box>
-            <Slider defaultValue={100} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }} onChange={handleBassVolumeChange}/>
+            <input type="range" id="bass-volume" min="0" max="1" step="0.01"/>
           </Box>
           
           <Box
@@ -136,7 +208,7 @@ const StemRemix = () => {
               <FontAwesomeIcon icon={faMusic} className='icon'/>
               <Typography id='slider-text'>Other</Typography>
             </Box>
-            <Slider defaultValue={0} aria-label="Default" valueLabelDisplay="auto" style={{ marginRight: '30px', color: '#1DB954' }} onChange={handleOtherVolumeChange}/>
+            <input type="range" id="volume" min="0" max="1" step="0.01"/>
           </Box>
         </Box>
       </Box>

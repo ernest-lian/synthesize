@@ -7,6 +7,8 @@ import {
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import PauseIcon from '@mui/icons-material/Pause';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import '../../styling/remixPlaying.css';
 
@@ -21,6 +23,14 @@ const RemixPlaying: FunctionComponent<RemixPlayingProps> = (props): ReactElement
     setFavorite(!favorite)
   };
 
+  const [playing, setPlaying] = useState(false);
+
+
+  const handleSetPlaying = () => {
+    setPlaying(!playing)
+
+  };
+
   return(
     <Box
       id='remix-playing'
@@ -33,8 +43,17 @@ const RemixPlaying: FunctionComponent<RemixPlayingProps> = (props): ReactElement
       <Box
         id='remix-information'
       >
-        <Typography id='remix-playing-title'>test drive</Typography>
-        <Typography id='remix-playing-artist'>Ariana Grande</Typography>
+        <Box
+          display='flex'
+          flexDirection='row'
+          justifyContent='space-between'
+        >
+          <Box>
+            <Typography id='remix-playing-title'>test drive</Typography>
+            <Typography id='remix-playing-artist'>Ariana Grande</Typography>
+          </Box>
+          {playing ? <PauseIcon id='pause-icon' onClick = {() => handleSetPlaying()} /> : <PlayArrowIcon id='play-arrow-icon' onClick = {() => handleSetPlaying()} />}
+        </Box>
         <Slider id='remix-playing-time' aria-label="Play time" defaultValue={0} valueLabelDisplay="auto" style={{ color: '#1DB954' }}/>
         <Typography id='remix-playing-time'>2min 02 secs</Typography>
       <Box
