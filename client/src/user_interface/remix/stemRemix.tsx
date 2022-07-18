@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDrum, faMicrophoneLines, faGuitar, faMusic } from '@fortawesome/free-solid-svg-icons'
 
 import '../../styling/stemRemix.css';
+import '../../styling/currentlyPlayingMobile.css';
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -238,6 +239,7 @@ const StemRemix = () => {
       >
         <img
             id='currently-playing-cover-art'
+            src={Ctrl}
             alt="Cover art of currently playing track"
           />
         <Box

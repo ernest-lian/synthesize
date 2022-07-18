@@ -108,11 +108,7 @@ input[type='range'] {
     }
 
     #pause-icon {
-        align-self: center;
-        color: #ffffff;
-        background-color: #1db954;
-        border-radius: 25px;
-        padding: 5px;
+        display: none;
     }
 }
 
