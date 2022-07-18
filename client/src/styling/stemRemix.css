@@ -1,3 +1,7 @@
+input[type='range'] {
+    background-color: #1db954;
+}
+
 @media only screen and (max-width: 800px) {
     #sliders {
         display: flex;
@@ -22,6 +26,22 @@
         border-radius: 10px;
         align-items: center;
         margin: 20px;
+    }
+
+    #vocal-volume {
+        width: 85%;
+    }
+
+    #other-volume {
+        width: 85%;
+    }
+
+    #bass-volume {
+        width: 85%;
+    }
+
+    #drums-volume {
+        width: 85%;
     }
 
     #remix-playing-cover {
@@ -84,11 +104,7 @@
     }
 
     #play-arrow-icon {
-        align-self: center;
-        color: #ffffff;
-        background-color: #1db954;
-        border-radius: 25px;
-        padding: 5px;
+        display: none;
     }
 
     #pause-icon {
@@ -143,6 +159,22 @@
         border-radius: 10px;
         align-items: center;
         margin: 40px 20px 40px 20px;
+    }
+
+    #vocal-volume {
+        width: 85%;
+    }
+
+    #other-volume {
+        width: 85%;
+    }
+
+    #bass-volume {
+        width: 85%;
+    }
+
+    #drums-volume {
+        width: 85%;
     }
 
     #remix-playing-cover {

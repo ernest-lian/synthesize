@@ -7,7 +7,7 @@ import '../../styling/library.css';
 
 import RemixComponent from './remixComponent';
 
-import Ctrl from '../../ctrl.jpg';
+import Ctrl from '../test_drive.png';
 
 const Library = () => {  
   return(
@@ -20,28 +20,7 @@ const Library = () => {
         id='remix-container'
       >
         <RemixComponent 
-          number={1} cover={Ctrl} title="The Weekend" artist="Sza"
-        />
-        <RemixComponent 
-          number={2} cover={Ctrl} title="Life's Too Short" artist="Tinashe"
-        />
-        <RemixComponent 
-          number={3} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={4} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={5} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={6} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={7} cover={Ctrl} title="STUD" artist="Troye Sivan"
-        />
-        <RemixComponent 
-          number={8} cover={Ctrl} title="STUD" artist="Troye Sivan"
+          number={1} cover={Ctrl} title="test drive" artist="Ariana Grande"
         />
       </Box>
     </Box>

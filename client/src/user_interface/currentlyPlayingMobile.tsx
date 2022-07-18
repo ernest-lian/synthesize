@@ -6,7 +6,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import '../styling/currentlyPlayingMobile.css';
 
 
-import Ctrl from '../ctrl.jpg';
+import TestDrive from './test_drive.png';
 
 import drive from './test_drive.mp3';
 
@@ -34,7 +34,7 @@ const CurrentlyPlayingMobile = () => {
       >
         <img
             id='currently-playing-cover-art'
-            src={Ctrl}
+            src={TestDrive}
             alt="Cover art of currently playing track"
           />
         <Box

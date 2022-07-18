@@ -17,13 +17,12 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
-import Ctrl from '../../ctrl.jpg';
+import Ctrl from '../test_drive.png';
 
 import vocals from './../vocals.wav';
 import bass from './../bass.wav';
 import other from './../other.wav';
 import drums from './../drums.wav';
-import { ConstructionOutlined, VolumeDown } from '@mui/icons-material';
 
 const StemRemix = () => {  
     const [favorite, setFavorite] = useState(false);
@@ -33,7 +32,7 @@ const StemRemix = () => {
 
     const otherAudio = new Audio(other);
     const otherGainNode = new GainNode(audioContext, { gain: 0.5});
-    const otherVolume = document.getElementById("volume")!;
+    const otherVolume = document.getElementById("other-volume")!;
 
     const vocalAudio = new Audio(vocals);
     const vocalGainNode = new GainNode(audioContext, { gain: 0.5});
@@ -47,6 +46,11 @@ const StemRemix = () => {
     const drumsGainNode = new GainNode(audioContext, { gain: 0.5});
     const drumsVolume = document.getElementById("drums-volume")!;
 
+    useEffect(() => {
+      console.log('use effect')
+      console.log(playing)
+      console.log('use effect')
+    }, [playing]);
 
     setupEventListeners()
     setupContext()
@@ -66,11 +70,22 @@ const StemRemix = () => {
     }
 
     const handleSetPlaying = () => {
+      console.log(playing)
       setPlaying(!playing)
-      vocalAudio.play();
-      bassAudio.play();
-      drumsAudio.play();
-      otherAudio.play();
+
+      console.log("hello")
+      console.log(playing)
+      if (playing) {
+        vocalAudio.play();
+        bassAudio.play();
+        drumsAudio.play();
+        otherAudio.play();
+      } else {
+        vocalAudio.pause();
+        bassAudio.pause();
+        drumsAudio.pause();
+        otherAudio.pause();
+      }
     }
 
     const handleSetFavorite = () => {
@@ -166,7 +181,7 @@ const StemRemix = () => {
               <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
               <Typography id='slider-text'>Vocals</Typography>
             </Box>
-            <input type="range" id="vocal-volume" min="0" max="1" step="0.01"/>
+            <input type="range" id="vocal-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
           </Box>
 
           <Box
@@ -180,7 +195,7 @@ const StemRemix = () => {
               <FontAwesomeIcon icon={faDrum} className='icon'/>
               <Typography id='slider-text'>Drums</Typography>
             </Box>
-            <input type="range" id="drums-volume" min="0" max="1" step="0.01"/>
+            <input type="range" id="drums-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
           </Box>  
           
           <Box
@@ -194,7 +209,7 @@ const StemRemix = () => {
               <FontAwesomeIcon icon={faGuitar} className='icon'/>
               <Typography id='slider-text'>Bass</Typography>
             </Box>
-            <input type="range" id="bass-volume" min="0" max="1" step="0.01"/>
+            <input type="range" id="bass-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
           </Box>
           
           <Box
@@ -208,7 +223,7 @@ const StemRemix = () => {
               <FontAwesomeIcon icon={faMusic} className='icon'/>
               <Typography id='slider-text'>Other</Typography>
             </Box>
-            <input type="range" id="volume" min="0" max="1" step="0.01"/>
+            <input type="range" id="other-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
           </Box>
         </Box>
       </Box>

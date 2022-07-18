@@ -8,7 +8,6 @@ import Navigation from './navigation';
 import Remix from './remix/stemRemix';
 import Library from './library/library';
 import CurrentlyPlayingMobile from './currentlyPlayingMobile';
-import CurrentlyPlayingDesktop from './currentlyPlayingDesktop';
 
 import {
   Routes,
