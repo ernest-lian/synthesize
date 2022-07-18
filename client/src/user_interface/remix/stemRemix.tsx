@@ -24,6 +24,73 @@ import bass from './../bass.wav';
 import other from './../other.wav';
 import drums from './../drums.wav';
 
+// import CurrentlyPlayingMobile from '../currentlyPlayingMobile';
+
+const Sliders = () => {
+  return (
+    <Box
+        id='sliders'
+      >
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
+            <Typography id='slider-text'>Vocals</Typography>
+          </Box>
+          <input type="range" id="vocal-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+        </Box>
+
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faDrum} className='icon'/>
+            <Typography id='slider-text'>Drums</Typography>
+          </Box>
+          <input type="range" id="drums-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+        </Box>  
+        
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faGuitar} className='icon'/>
+            <Typography id='slider-text'>Bass</Typography>
+          </Box>
+          <input type="range" id="bass-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+        </Box>
+        
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faMusic} className='icon'/>
+            <Typography id='slider-text'>Other</Typography>
+          </Box>
+          <input type="range" id="other-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+        </Box>
+      </Box>
+  )
+}
+
+
 const StemRemix = () => {  
     const [favorite, setFavorite] = useState(false);
     const [playing, setPlaying] = useState(false);
@@ -70,11 +137,8 @@ const StemRemix = () => {
     }
 
     const handleSetPlaying = () => {
-      console.log(playing)
       setPlaying(!playing)
 
-      console.log("hello")
-      console.log(playing)
       if (playing) {
         vocalAudio.play();
         bassAudio.play();
@@ -95,25 +159,21 @@ const StemRemix = () => {
     async function setupEventListeners(){
       otherVolume?.addEventListener('input', event => {
         const element = event.target as HTMLInputElement
-        console.log(parseFloat(element.value))
         otherGainNode.gain.value = parseFloat(element.value)
       })
 
       vocalVolume?.addEventListener('input', event => {
         const element = event.target as HTMLInputElement
-        console.log(parseFloat(element.value))
         vocalGainNode.gain.value = parseFloat(element.value)
       })
 
       bassVolume?.addEventListener('input', event => {
         const element = event.target as HTMLInputElement
-        console.log(parseFloat(element.value))
         bassGainNode.gain.value = parseFloat(element.value)
       })
 
       drumsVolume?.addEventListener('input', event => {
         const element = event.target as HTMLInputElement
-        console.log(parseFloat(element.value))
         drumsGainNode.gain.value = parseFloat(element.value)
       })
     }
@@ -164,70 +224,36 @@ const StemRemix = () => {
       </Box>
       </Box>
     </Box>
+    <Sliders/>
+    </Box>
+    
 
 
-
+    <Box
+      id='currently-playing'
+    >
+      <Box
+        display='flex'
+        flexDirection='row'
+      >
+        <img
+            id='currently-playing-cover-art'
+            alt="Cover art of currently playing track"
+          />
         <Box
-          id='sliders'
+          display='flex'
+          flexDirection='column'
+          alignSelf='center'
+          pl={1}
+          textAlign='left'
         >
-          <Box
-            className='slider'
-          >
-            <Box
-              display='flex'
-              flexDirection='column'
-              p={2}
-            >
-              <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
-              <Typography id='slider-text'>Vocals</Typography>
-            </Box>
-            <input type="range" id="vocal-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-          </Box>
-
-          <Box
-            className='slider'
-          >
-            <Box
-              display='flex'
-              flexDirection='column'
-              p={2}
-            >
-              <FontAwesomeIcon icon={faDrum} className='icon'/>
-              <Typography id='slider-text'>Drums</Typography>
-            </Box>
-            <input type="range" id="drums-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-          </Box>  
-          
-          <Box
-            className='slider'
-          >
-            <Box
-              display='flex'
-              flexDirection='column'
-              p={2}
-            >
-              <FontAwesomeIcon icon={faGuitar} className='icon'/>
-              <Typography id='slider-text'>Bass</Typography>
-            </Box>
-            <input type="range" id="bass-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-          </Box>
-          
-          <Box
-            className='slider'
-          >
-            <Box
-              display='flex'
-              flexDirection='column'
-              p={2}
-            >
-              <FontAwesomeIcon icon={faMusic} className='icon'/>
-              <Typography id='slider-text'>Other</Typography>
-            </Box>
-            <input type="range" id="other-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-          </Box>
+          <Typography id='title'>better off</Typography>
+          <Typography id='artist'>Ariana Grande</Typography>
         </Box>
       </Box>
+      {playing ? <PlayArrowIcon onClick = {() => handleSetPlaying()} style={{ 'alignSelf': 'center', color: '#1DB954'}}/> : <PauseIcon onClick = {() => handleSetPlaying()} style={{ 'alignSelf': 'center', color: '#1DB954'}}/>}
     </Box>
+  </Box>
     )
 }
 

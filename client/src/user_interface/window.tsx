@@ -36,7 +36,6 @@ const Window = () => {
       <Box
         id='playing-and-navigation-container'
       >
-        <CurrentlyPlayingMobile/>
         <Navigation/>
       </Box>
     </Box>
