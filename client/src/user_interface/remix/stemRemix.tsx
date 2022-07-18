@@ -25,71 +25,71 @@ import bass from './../bass.wav';
 import other from './../other.wav';
 import drums from './../drums.wav';
 
-// import CurrentlyPlayingMobile from '../currentlyPlayingMobile';
+import CurrentlyPlayingMobile from '../currentlyPlayingMobile';
 
-const Sliders = () => {
-  return (
-    <Box
-        id='sliders'
-      >
-        <Box
-          className='slider'
-        >
-          <Box
-            display='flex'
-            flexDirection='column'
-            p={2}
-          >
-            <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
-            <Typography id='slider-text'>Vocals</Typography>
-          </Box>
-          <input type="range" id="vocal-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-        </Box>
+// const Sliders = () => {
+//   return (
+//     <Box
+//         id='sliders'
+//       >
+//         <Box
+//           className='slider'
+//         >
+//           <Box
+//             display='flex'
+//             flexDirection='column'
+//             p={2}
+//           >
+//             <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
+//             <Typography id='slider-text'>Vocals</Typography>
+//           </Box>
+//           <input type="range" id="vocal-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+//         </Box>
 
-        <Box
-          className='slider'
-        >
-          <Box
-            display='flex'
-            flexDirection='column'
-            p={2}
-          >
-            <FontAwesomeIcon icon={faDrum} className='icon'/>
-            <Typography id='slider-text'>Drums</Typography>
-          </Box>
-          <input type="range" id="drums-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-        </Box>  
+//         <Box
+//           className='slider'
+//         >
+//           <Box
+//             display='flex'
+//             flexDirection='column'
+//             p={2}
+//           >
+//             <FontAwesomeIcon icon={faDrum} className='icon'/>
+//             <Typography id='slider-text'>Drums</Typography>
+//           </Box>
+//           <input type="range" id="drums-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+//         </Box>  
         
-        <Box
-          className='slider'
-        >
-          <Box
-            display='flex'
-            flexDirection='column'
-            p={2}
-          >
-            <FontAwesomeIcon icon={faGuitar} className='icon'/>
-            <Typography id='slider-text'>Bass</Typography>
-          </Box>
-          <input type="range" id="bass-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-        </Box>
+//         <Box
+//           className='slider'
+//         >
+//           <Box
+//             display='flex'
+//             flexDirection='column'
+//             p={2}
+//           >
+//             <FontAwesomeIcon icon={faGuitar} className='icon'/>
+//             <Typography id='slider-text'>Bass</Typography>
+//           </Box>
+//           <input type="range" id="bass-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+//         </Box>
         
-        <Box
-          className='slider'
-        >
-          <Box
-            display='flex'
-            flexDirection='column'
-            p={2}
-          >
-            <FontAwesomeIcon icon={faMusic} className='icon'/>
-            <Typography id='slider-text'>Other</Typography>
-          </Box>
-          <input type="range" id="other-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-        </Box>
-      </Box>
-  )
-}
+//         <Box
+//           className='slider'
+//         >
+//           <Box
+//             display='flex'
+//             flexDirection='column'
+//             p={2}
+//           >
+//             <FontAwesomeIcon icon={faMusic} className='icon'/>
+//             <Typography id='slider-text'>Other</Typography>
+//           </Box>
+//           <input type="range" id="other-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+//         </Box>
+//       </Box>
+//   )
+// }
 
 
 const StemRemix = () => {  
@@ -188,48 +188,106 @@ const StemRemix = () => {
         id='remix-and-sliders'
       >
         <Box
-      id='remix-playing'
-    >
-      <img
-        id='remix-playing-cover'
-        src={Ctrl}
-        alt='Cover art of current remix'
-      />
+          id='remix-playing'
+        >
+          <img
+            id='remix-playing-cover'
+            src={Ctrl}
+            alt='Cover art of current remix'
+          />
+          <Box
+            id='remix-information'
+          >
+            <Box
+              display='flex'
+              flexDirection='row'
+              justifyContent='space-between'
+            >
+              <Box>
+                <Typography id='remix-playing-title'>test drive</Typography>
+                <Typography id='remix-playing-artist'>Ariana Grande</Typography>
+              </Box>
+              {playing ? <PauseIcon id='pause-icon' onClick = {() => handleSetPlaying()} /> : <PlayArrowIcon id='play-arrow-icon' onClick = {() => handleSetPlaying()} />}
+            </Box>
+            <Slider id='remix-playing-time' aria-label="Play time" defaultValue={0} valueLabelDisplay="auto" style={{ color: '#1DB954' }}/>
+            <Typography id='remix-playing-time'>2min 02 secs</Typography>
+          <Box
+            id='remix-creator'
+          >
+            {favorite ? <FavoriteIcon id='favorite-icon' onClick = {() => handleSetFavorite()} /> : <FavoriteBorderIcon id='favorite-border-icon' onClick = {() => handleSetFavorite()} />}
+            <img
+              style={{ borderRadius: '20px', height: '20px', width: '20px'}}
+              src={Ctrl}
+              alt='User profile of remix creator'
+              id='remix-creator-icon'
+            />
+            <Typography id='remix-playing-creator'>ernest</Typography>
+          </Box>
+        </Box>
+      </Box>
+      
       <Box
-        id='remix-information'
+        id='sliders'
       >
         <Box
-          display='flex'
-          flexDirection='row'
-          justifyContent='space-between'
+          className='slider'
         >
-          <Box>
-            <Typography id='remix-playing-title'>test drive</Typography>
-            <Typography id='remix-playing-artist'>Ariana Grande</Typography>
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
+            <Typography id='slider-text'>Vocals</Typography>
           </Box>
-          {playing ? <PauseIcon id='pause-icon' onClick = {() => handleSetPlaying()} /> : <PlayArrowIcon id='play-arrow-icon' onClick = {() => handleSetPlaying()} />}
+          <input type="range" id="vocal-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
         </Box>
-        <Slider id='remix-playing-time' aria-label="Play time" defaultValue={0} valueLabelDisplay="auto" style={{ color: '#1DB954' }}/>
-        <Typography id='remix-playing-time'>2min 02 secs</Typography>
-      <Box
-        id='remix-creator'
-      >
-        {favorite ? <FavoriteIcon id='favorite-icon' onClick = {() => handleSetFavorite()} /> : <FavoriteBorderIcon id='favorite-border-icon' onClick = {() => handleSetFavorite()} />}
-        <img
-          style={{ borderRadius: '20px', height: '20px', width: '20px'}}
-          src={Ctrl}
-          alt='User profile of remix creator'
-          id='remix-creator-icon'
-        />
-        <Typography id='remix-playing-creator'>ernest</Typography>
+
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faDrum} className='icon'/>
+            <Typography id='slider-text'>Drums</Typography>
+          </Box>
+          <input type="range" id="drums-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+        </Box>  
+        
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faGuitar} className='icon'/>
+            <Typography id='slider-text'>Bass</Typography>
+          </Box>
+          <input type="range" id="bass-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+        </Box>
+        
+        <Box
+          className='slider'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            p={2}
+          >
+            <FontAwesomeIcon icon={faMusic} className='icon'/>
+            <Typography id='slider-text'>Other</Typography>
+          </Box>
+          <input type="range" id="other-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+        </Box>
       </Box>
-      </Box>
-    </Box>
-    <Sliders/>
+
     </Box>
     
-
-
     <Box
       id='currently-playing'
     >
