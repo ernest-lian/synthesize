@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.ad1b6894.chunk.css",
-    "main.js": "/static/js/main.f8a51d21.chunk.js",
-    "main.js.map": "/static/js/main.f8a51d21.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.69f72d82.js",
-    "runtime-main.js.map": "/static/js/runtime-main.69f72d82.js.map",
-    "static/js/2.96d4a1f7.chunk.js": "/static/js/2.96d4a1f7.chunk.js",
-    "static/js/2.96d4a1f7.chunk.js.map": "/static/js/2.96d4a1f7.chunk.js.map",
-    "static/js/3.b01e2cc9.chunk.js": "/static/js/3.b01e2cc9.chunk.js",
-    "static/js/3.b01e2cc9.chunk.js.map": "/static/js/3.b01e2cc9.chunk.js.map",
+    "main.css": "/static/css/main.54117568.chunk.css",
+    "main.js": "/static/js/main.8a4310b0.chunk.js",
+    "main.js.map": "/static/js/main.8a4310b0.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.549e386d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.549e386d.js.map",
+    "static/js/2.0652ed8d.chunk.js": "/static/js/2.0652ed8d.chunk.js",
+    "static/js/2.0652ed8d.chunk.js.map": "/static/js/2.0652ed8d.chunk.js.map",
+    "static/js/3.c84479e1.chunk.js": "/static/js/3.c84479e1.chunk.js",
+    "static/js/3.c84479e1.chunk.js.map": "/static/js/3.c84479e1.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.ad1b6894.chunk.css.map": "/static/css/main.ad1b6894.chunk.css.map",
-    "static/js/2.96d4a1f7.chunk.js.LICENSE.txt": "/static/js/2.96d4a1f7.chunk.js.LICENSE.txt",
-    "static/media/bass.39173d87.wav": "/static/media/bass.39173d87.wav",
-    "static/media/drums.3a6fae4c.wav": "/static/media/drums.3a6fae4c.wav",
-    "static/media/other.da10bb59.wav": "/static/media/other.da10bb59.wav",
+    "static/css/main.54117568.chunk.css.map": "/static/css/main.54117568.chunk.css.map",
+    "static/js/2.0652ed8d.chunk.js.LICENSE.txt": "/static/js/2.0652ed8d.chunk.js.LICENSE.txt",
+    "static/media/bass.d3a6c8d1.wav": "/static/media/bass.d3a6c8d1.wav",
+    "static/media/drums.822c218e.wav": "/static/media/drums.822c218e.wav",
+    "static/media/other.70f259e9.wav": "/static/media/other.70f259e9.wav",
     "static/media/test_drive.fd2c38cf.png": "/static/media/test_drive.fd2c38cf.png",
-    "static/media/vocals.8361b78e.wav": "/static/media/vocals.8361b78e.wav"
+    "static/media/vocals.76da2ad2.wav": "/static/media/vocals.76da2ad2.wav"
   },
   "entrypoints": [
-    "static/js/runtime-main.69f72d82.js",
-    "static/js/2.96d4a1f7.chunk.js",
-    "static/css/main.ad1b6894.chunk.css",
-    "static/js/main.f8a51d21.chunk.js"
+    "static/js/runtime-main.549e386d.js",
+    "static/js/2.0652ed8d.chunk.js",
+    "static/css/main.54117568.chunk.css",
+    "static/js/main.8a4310b0.chunk.js"
   ]
 }

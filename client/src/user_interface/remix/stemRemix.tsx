@@ -13,8 +13,6 @@ import { faDrum, faMicrophoneLines, faGuitar, faMusic } from '@fortawesome/free-
 import '../../styling/stemRemix.css';
 import '../../styling/currentlyPlayingMobile.css';
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
@@ -25,75 +23,7 @@ import bass from './../bass.wav';
 import other from './../other.wav';
 import drums from './../drums.wav';
 
-import CurrentlyPlayingMobile from '../currentlyPlayingMobile';
-
-// const Sliders = () => {
-//   return (
-//     <Box
-//         id='sliders'
-//       >
-//         <Box
-//           className='slider'
-//         >
-//           <Box
-//             display='flex'
-//             flexDirection='column'
-//             p={2}
-//           >
-//             <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
-//             <Typography id='slider-text'>Vocals</Typography>
-//           </Box>
-//           <input type="range" id="vocal-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-//         </Box>
-
-//         <Box
-//           className='slider'
-//         >
-//           <Box
-//             display='flex'
-//             flexDirection='column'
-//             p={2}
-//           >
-//             <FontAwesomeIcon icon={faDrum} className='icon'/>
-//             <Typography id='slider-text'>Drums</Typography>
-//           </Box>
-//           <input type="range" id="drums-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-//         </Box>  
-        
-//         <Box
-//           className='slider'
-//         >
-//           <Box
-//             display='flex'
-//             flexDirection='column'
-//             p={2}
-//           >
-//             <FontAwesomeIcon icon={faGuitar} className='icon'/>
-//             <Typography id='slider-text'>Bass</Typography>
-//           </Box>
-//           <input type="range" id="bass-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-//         </Box>
-        
-//         <Box
-//           className='slider'
-//         >
-//           <Box
-//             display='flex'
-//             flexDirection='column'
-//             p={2}
-//           >
-//             <FontAwesomeIcon icon={faMusic} className='icon'/>
-//             <Typography id='slider-text'>Other</Typography>
-//           </Box>
-//           <input type="range" id="other-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
-//         </Box>
-//       </Box>
-//   )
-// }
-
-
 const StemRemix = () => {  
-    const [favorite, setFavorite] = useState(false);
     const [playing, setPlaying] = useState(false);
 
     const audioContext = new AudioContext();
@@ -153,10 +83,6 @@ const StemRemix = () => {
       }
     }
 
-    const handleSetFavorite = () => {
-      setFavorite(!favorite)
-    };
-
     async function setupEventListeners(){
       otherVolume?.addEventListener('input', event => {
         const element = event.target as HTMLInputElement
@@ -214,7 +140,6 @@ const StemRemix = () => {
           <Box
             id='remix-creator'
           >
-            {favorite ? <FavoriteIcon id='favorite-icon' onClick = {() => handleSetFavorite()} /> : <FavoriteBorderIcon id='favorite-border-icon' onClick = {() => handleSetFavorite()} />}
             <img
               style={{ borderRadius: '20px', height: '20px', width: '20px'}}
               src={Ctrl}
