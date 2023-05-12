@@ -8,6 +8,9 @@ import { makeStyles } from '@material-ui/core/styles';
 /* Navigation icons */
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
+import AddIcon from '@mui/icons-material/Add';
 
 /* Router */
 import { Link } from "react-router-dom";
@@ -17,7 +20,7 @@ import '../styling/navigation.css';
 
 const styles = makeStyles({
   selectedNavigation: {
-      "background-color": "white",
+      "background-color": "red",
       "border-radius": "20px",
       "padding": "5px"
   },
@@ -39,17 +42,39 @@ const Navigation = () => {
   return(
     <Box
       id='navigation'
-    >     
-      <Link 
-          to={'/remix'}
+    > 
+    <Link 
+          to={'/'}
           style={{ textDecoration: 'none', color: 'black' }}
       >
         <Box
-          onClick={()=> {handleCurrentPage('remix')}}
-          id='remix-icon-container'
+          onClick={()=> {handleCurrentPage('home')}}
+          id='home-icon-container'
         >
-          <MusicNoteIcon id='remix-icon' className={(page === 'remix') ? classes.selectedNavigation : classes.nonSelectedNavigation} fontSize="medium"/>
-          <Typography id='navigation-remix'>Remix</Typography>
+          <HomeIcon id='home-icon' className={(page === 'home') ? classes.selectedNavigation : classes.nonSelectedNavigation} fontSize="medium"/>
+        </Box>
+      </Link>    
+      <Link 
+          to={'/library'}
+          style={{ textDecoration: 'none', color: 'black' }}
+      >
+        <Box
+          onClick={()=> {handleCurrentPage('library')}}
+          id='library-icon-container'
+        >
+          <MusicNoteIcon id='library-icon' className={(page === 'remix') ? classes.selectedNavigation : classes.nonSelectedNavigation} fontSize="medium"/>
+        </Box>
+      </Link>
+
+      <Link 
+          to={'/add'}
+          style={{ textDecoration: 'none', color: 'black' }}
+      >
+        <Box
+          onClick={()=> {handleCurrentPage('add')}}
+          id='add-icon-container'
+        >
+          <AddIcon id='add-icon' className={(page === 'add') ? classes.selectedNavigation : classes.nonSelectedNavigation} fontSize="medium"/>
         </Box>
       </Link>
 
@@ -62,9 +87,19 @@ const Navigation = () => {
           id='library-icon-container'
         >
           <LibraryMusicIcon id='library-icon' className={(page === 'library') ? classes.selectedNavigation : classes.nonSelectedNavigation} fontSize="medium"/>
-          <Typography id='navigation-library'>Library</Typography>
         </Box>
       </Link>
+      <Link 
+          to={'/profile'}
+          style={{ textDecoration: 'none', color: 'black' }}
+      >
+        <Box
+          onClick={()=> {handleCurrentPage('profile')}}
+          id='profile-icon-container'
+        >
+          <PersonIcon id='profile-icon' className={(page === 'profile') ? classes.selectedNavigation : classes.nonSelectedNavigation} fontSize="medium"/>
+        </Box>
+      </Link>   
     </Box>
     )
 }

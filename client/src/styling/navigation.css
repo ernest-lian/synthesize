@@ -1,43 +1,29 @@
-#navigation-remix {
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
-}
-
-#navigation-library {
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
-}
-
 @media only screen and (max-width: 800px) {
     #navigation{
         display: flex;
         flex-direction: row;
         width: 100%;
         justify-content: space-around;
-        background-color: white;
+        background-color: black;
         padding-bottom: 10px;
     }
 
-    #remix-icon-container {
+    #remix-icon-container, #library-icon-container, #profile-icon-container, #home-icon-container, #add-icon-container {
         padding-top: 15px;
+        padding-bottom: 15px;
         display: flex;
         flex-direction:column;
     }
 
-    #remix-icon {
-        color: black;
+    #remix-icon, #library-icon, #home-icon, #profile-icon{
+        color: white;
         align-self: center;
     }
 
-    #library-icon-container {
-        padding-top: 15px;
-        display: flex;
-        flex-direction:column;
-    }
-
-    #library-icon {
-        color: black;
+    #add-icon {
+        color: white;
         align-self: center;
+        background-color: #1DB954;
     }
   }
 
@@ -58,7 +44,7 @@
         display: none;
     }
 
-    #remix-icon-container {
+    #remix-icon-container #library-icon-container{
         padding-top: 15px;
     }
 
@@ -66,10 +52,6 @@
         color: #1DB954;
     }
     
-    #library-icon-container {
-        padding-top: 15px;
-    }
-
     #library-icon {
         color: #1DB954;
     }

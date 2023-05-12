@@ -29,13 +29,17 @@
 
     #window-container {
         box-shadow: 5px 5px;
-        height: 95%;    
-        width: 95%;
+        height: 100%;    
+        width: 100%;
         overflow-y: scroll;
-        background: rgb(252,251,251);
+        background: black;
     }
 
     #playing-and-navigation-container {
         border-left: black 1px solid;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
     }
   }
