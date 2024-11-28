@@ -92,17 +92,17 @@ const drumsVolume = document.getElementById("drums-volume")!;
     useEffect(() => {
       console.log(playing)
 
-      // playing ? vocalAudio.play() : vocalAudio.pause();
-      // playing ? bassAudio.play() : bassAudio.pause();
-      // playing ? drumsAudio.play() : drumsAudio.pause();
-      // playing ? otherAudio.play() : otherAudio.pause();
+      playing ? vocalAudio.play() : vocalAudio.pause();
+      playing ? bassAudio.play() : bassAudio.pause();
+      playing ? drumsAudio.play() : drumsAudio.pause();
+      playing ? otherAudio.play() : otherAudio.pause();
 
-      // vocalAudio.addEventListener('ended', () => setPlaying(false));
+      vocalAudio.addEventListener('ended', () => setPlaying(false));
 
-      // return () => {
-      //   vocalAudio.removeEventListener('ended', () => setPlaying(false));
-      // };
-    }, [playing]);
+      return () => {
+        vocalAudio.removeEventListener('ended', () => setPlaying(false));
+      };
+    });
 
     setupEventListeners()
     setupContext()
