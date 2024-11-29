@@ -54,35 +54,3 @@
       width: 95%;
     }
   }
-
-
-  /* @media only screen and (max-width: 800px) {
-    #application-wrapper {
-       background: white;
-       border: 1px solid black;
-       box-shadow: 5px 5px;
-       overflow-y: scroll;
-       height: 95%;
-       width: 95%;
-     }
-   }
-   
-   @media only screen and (min-width: 800px) {
-     #application-wrapper {
-       background: white;
-       border: 1px solid black;
-       box-shadow: 10px 10px;
-       overflow-y: scroll;
-       height: 65%;
-       width: 75%;
-     }
-   }
-   
-   #application-wrapper {
-     -ms-overflow-style: none;
-     scrollbar-width: none; 
-   }
-   
-   #application-wrapper::-webkit-scrollbar { 
-     display: none; 
-   } */
