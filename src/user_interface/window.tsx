@@ -4,13 +4,7 @@ import {
 
 import '../styling/window.css';
 
-import Navigation from './navigation';
 import Remix from './remix/stemRemix';
-
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
 
 const Window = () => {
 
