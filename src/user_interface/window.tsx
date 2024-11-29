@@ -6,7 +6,6 @@ import '../styling/window.css';
 
 import Navigation from './navigation';
 import Remix from './remix/stemRemix';
-import Library from './library/library';
 
 import {
   Routes,
@@ -17,26 +16,12 @@ const Window = () => {
 
   return(
     <Box
-      id='window-container'
+      id='application-wrapper'
+      display='flex'
+      justifyContent='center'
+      alignItems='center'
     >
-      <Box
-        id="window"
-      >
-        <Routes>
-          <Route path="/" element={<Remix />} />
-        </Routes>
-        <Routes>
-          <Route path="/remix" element={<Remix />} />
-        </Routes>
-        <Routes>
-          <Route path="/library" element={<Library />} />
-        </Routes>
-      </Box>
-      <Box
-        id='playing-and-navigation-container'
-      >
-        <Navigation/>
-      </Box>
+      <Remix/>
     </Box>
     )
 }

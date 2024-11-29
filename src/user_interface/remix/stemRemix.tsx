@@ -111,7 +111,6 @@ const drumsVolume = document.getElementById("drums-volume")!;
     <Box
       id='remix-window'
     >
-      <Typography id='stem-remix'>Remix</Typography>
       <Box
         id='remix-and-sliders'
       >
