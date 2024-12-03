@@ -40,14 +40,4 @@
         text-align: left;
     }
 
-    #remixes-navigation {
-        background-color: #C4C4C4;
-        color: white;
-        font-family: 'Lato', sans-serif;
-        font-size: 30px;
-        font-weight: bold;
-        border-radius: 20px;
-        display: inline;
-        padding: 10px;
-    }
 }
