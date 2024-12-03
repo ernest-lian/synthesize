@@ -21,8 +21,8 @@
 
     #application-wrapper {
       background: white;
-      border: 1px solid black;
-      box-shadow: 10px 10px;
+      padding: 20px;
+      border-radius: 20px;
       height: 65%;
       width: 75%;
     }
@@ -46,8 +46,6 @@
 
     #application-wrapper {
       background: white;
-      border: 1px solid black;
-      box-shadow: 5px 5px;
       height: 95%;
       width: 95%;
     }

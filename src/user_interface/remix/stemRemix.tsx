@@ -65,6 +65,7 @@ const drumsVolume = document.getElementById("drums-volume")!;
     const drumsTrack = audioContext.createMediaElementSource(drumsAudio);
     drumsTrack.connect(drumsGainNode).connect(audioContext.destination);
   }
+
   
   async function setupEventListeners(){
     otherVolume?.addEventListener('input', event => {
@@ -107,6 +108,7 @@ const drumsVolume = document.getElementById("drums-volume")!;
     setupEventListeners()
     setupContext()
 
+
   return(
     <Box
       id='remix-window'
@@ -132,6 +134,7 @@ const drumsVolume = document.getElementById("drums-volume")!;
               <Box
                 display='flex'
                 flexDirection='row'
+                justifyContent='space-between'
               >
                 <Box>
                   <Typography id='remix-playing-title'>test drive</Typography>
