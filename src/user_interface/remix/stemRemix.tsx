@@ -222,7 +222,6 @@ const StemRemix = () => {
                 value={(currentTime / duration) * 100}
                 aria-label="Play time"
                 defaultValue={0}
-                valueLabelDisplay="auto"
                 style={{ color: '#1DB954' }}
                 onChange={handleSliderChange}
               />
