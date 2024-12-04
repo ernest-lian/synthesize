@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import  React, { useState, useEffect, useRef, useCallback } from 'react';
+import  React, { useState, useEffect, useRef } from 'react';
 import { 
   Box,
   Typography
@@ -59,20 +59,6 @@ const StemRemix = () => {
     drums: drumsAudio.current
   });
 
-  const setupContext = useCallback(() => {
-    const track = audioContext.current.createMediaElementSource(audioElements.other);
-    track.connect(otherGainNode.current).connect(audioContext.current.destination)
-  
-    const vocalTrack = audioContext.current.createMediaElementSource(audioElements.vocal);
-    vocalTrack.connect(vocalGainNode.current).connect(audioContext.current.destination);
-  
-    const bassTrack = audioContext.current.createMediaElementSource(audioElements.bass);
-    bassTrack.connect(bassGainNode.current).connect(audioContext.current.destination);
-  
-    const drumsTrack = audioContext.current.createMediaElementSource(audioElements.drums);
-    drumsTrack.connect(drumsGainNode.current).connect(audioContext.current.destination);
-  }, [audioElements.other, audioElements.bass, audioElements.drums, audioElements.vocal]);
-
   const handleSliderChange = (event, newValue) => {
     const audio = vocalAudio;
     audio.currentTime = (newValue / 100) * audio.duration;
@@ -82,31 +68,42 @@ const StemRemix = () => {
     setPlaying(playing => !playing)
   }
 
-  const setupEventListeners = useCallback(() => {
-    otherVolume?.addEventListener('input', event => {
-      const element = event.target as HTMLInputElement
-      otherGainNode.current.gain.value = parseFloat(element.value)
-    })
-  
-    vocalVolume?.addEventListener('input', event => {
-      const element = event.target as HTMLInputElement
-      vocalGainNode.current.gain.value = parseFloat(element.value)
-    })
-  
-    bassVolume?.addEventListener('input', event => {
-      const element = event.target as HTMLInputElement
-      bassGainNode.current.gain.value = parseFloat(element.value)
-    })
-  
-    drumsVolume?.addEventListener('input', event => {
-      const element = event.target as HTMLInputElement
-      drumsGainNode.current.gain.value = parseFloat(element.value)
-    })
-  }, [otherVolume, vocalVolume, bassVolume,drumsVolume]);
-
   useEffect(() => {
-    setupContext();
-    setupEventListeners();
+    const setupContext = () => {
+      const track = audioContext.current.createMediaElementSource(audioElements.other);
+      track.connect(otherGainNode.current).connect(audioContext.current.destination)
+    
+      const vocalTrack = audioContext.current.createMediaElementSource(audioElements.vocal);
+      vocalTrack.connect(vocalGainNode.current).connect(audioContext.current.destination);
+    
+      const bassTrack = audioContext.current.createMediaElementSource(audioElements.bass);
+      bassTrack.connect(bassGainNode.current).connect(audioContext.current.destination);
+    
+      const drumsTrack = audioContext.current.createMediaElementSource(audioElements.drums);
+      drumsTrack.connect(drumsGainNode.current).connect(audioContext.current.destination);
+    };
+    
+    const setupEventListeners = () => {
+      otherVolume?.addEventListener('input', event => {
+        const element = event.target as HTMLInputElement
+        otherGainNode.current.gain.value = parseFloat(element.value)
+      })
+    
+      vocalVolume?.addEventListener('input', event => {
+        const element = event.target as HTMLInputElement
+        vocalGainNode.current.gain.value = parseFloat(element.value)
+      })
+    
+      bassVolume?.addEventListener('input', event => {
+        const element = event.target as HTMLInputElement
+        bassGainNode.current.gain.value = parseFloat(element.value)
+      })
+    
+      drumsVolume?.addEventListener('input', event => {
+        const element = event.target as HTMLInputElement
+        drumsGainNode.current.gain.value = parseFloat(element.value)
+      })
+    };
 
     const handleLoadedMetadata = () => {
       setDuration(vocalAudio.current.duration);
@@ -119,10 +116,13 @@ const StemRemix = () => {
     vocalAudio.current.addEventListener('loadedmetadata', handleLoadedMetadata)
     vocalAudio.current.addEventListener('timeupdate', handleTimeUpdate)
 
+    setupContext();
+    setupEventListeners();
 
     return () => {
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [audioElements.other, audioElements.bass, audioElements.drums, audioElements.vocal]);
 
   useEffect(() => {
     const playAudio = async () => {
