@@ -82,8 +82,8 @@
         justify-content: space-around;
         align-items: center;
         height: inherit;
-        padding-left: 50px;
-        padding-right: 50px;
+        margin-left: 50px;
+        margin-right: 50px;
     }
 
     #sliders {
@@ -91,6 +91,7 @@
         flex-direction: column;
         width: 100%;
         margin-left: 50px;
+        margin-right: 50px;
     }
 
     .slider {
@@ -195,5 +196,5 @@
 .icon {
     font-size: 40px;
     color: black;
-    opacity: 0.5;
+    opacity: 0.5;   
 }
