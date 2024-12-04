@@ -39,24 +39,22 @@
         flex-direction: column;
         text-align: left;
         justify-content: center;
-        padding: 0px 20px 0px 20px;
     }
 
     #remix-playing {
-        overflow: auto;
+        display: flex;
+        flex-direction: column;
     }
 
     #remix-playing-title {
         font-size: 18px;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
-        color: white;
     }
     
     #remix-playing-artist {
         font-size: 10px;
         font-family: 'Lato', sans-serif;
-        color: white;
     }
 }
 
