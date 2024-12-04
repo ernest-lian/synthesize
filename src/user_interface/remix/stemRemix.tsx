@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import  React, { useState, useEffect } from 'react';
+import  React, { useState, useEffect, useRef } from 'react';
 import { 
   Box,
   Typography
@@ -27,86 +27,155 @@ import drums from './../drums.wav';
 
 
 const StemRemix = () => {
-  console.log('in stem remix')  
   const [playing, setPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  const audioContext = useRef(new AudioContext());
+  const otherAudio = useRef(new Audio(other));
+  const vocalAudio = useRef(new Audio(vocals));
+  const bassAudio = useRef(new Audio(bass));
+  const drumsAudio = useRef(new Audio(drums));
+
+  const otherGainNode = useRef(new GainNode(audioContext.current, { gain: 0.5}));
+  const vocalGainNode = useRef(new GainNode(audioContext.current, { gain: 0.5}));
+  const bassGainNode = useRef(new GainNode(audioContext.current, { gain: 0.5}));
+  const drumsGainNode = useRef(new GainNode(audioContext.current, { gain: 0.5}));
+
+  const otherVolume = document.getElementById("other-volume")!;
+  const vocalVolume = document.getElementById("vocal-volume")!;
+  const bassVolume = document.getElementById("bass-volume")!;
+  const drumsVolume = document.getElementById("drums-volume")!;
+
+  const otherVolumeRef = useRef(null);
+  const vocalVolumeRef = useRef(null);
+  const bassVolumeRef = useRef(null);
+  const drumsVolumeRef = useRef(null);
+
+  const [audioElements] = useState({
+    other: otherAudio.current,
+    vocal: vocalAudio.current,
+    bass: bassAudio.current,
+    drums: drumsAudio.current
+  });
+
+  const setupContext = () => {
+    const track = audioContext.current.createMediaElementSource(audioElements.other);
+    track.connect(otherGainNode.current).connect(audioContext.current.destination)
   
+    const vocalTrack = audioContext.current.createMediaElementSource(audioElements.vocal);
+    vocalTrack.connect(vocalGainNode.current).connect(audioContext.current.destination);
+  
+    const bassTrack = audioContext.current.createMediaElementSource(audioElements.bass);
+    bassTrack.connect(bassGainNode.current).connect(audioContext.current.destination);
+  
+    const drumsTrack = audioContext.current.createMediaElementSource(audioElements.drums);
+    drumsTrack.connect(drumsGainNode.current).connect(audioContext.current.destination);
+  }
+
+  const handleSliderChange = (event, newValue) => {
+    const audio = vocalAudio;
+    audio.currentTime = (newValue / 100) * audio.duration;
+  };
+
   const handleSetPlaying = () => {
     setPlaying(playing => !playing)
   }
 
-  const audioContext = new AudioContext();
-  const otherAudio = new Audio(other);
-  const vocalAudio = new Audio(vocals);
-  const bassAudio = new Audio(bass);
-  const drumsAudio = new Audio(drums);
-
-  const otherGainNode = new GainNode(audioContext, { gain: 0.5});
-const otherVolume = document.getElementById("other-volume")!;
-
-const vocalGainNode = new GainNode(audioContext, { gain: 0.5});
-const vocalVolume = document.getElementById("vocal-volume")!;
-
-const bassGainNode = new GainNode(audioContext, { gain: 0.5});
-const bassVolume = document.getElementById("bass-volume")!;
-
-const drumsGainNode = new GainNode(audioContext, { gain: 0.5});
-const drumsVolume = document.getElementById("drums-volume")!;
-
-  async function setupContext() {
-    const track = audioContext.createMediaElementSource(otherAudio);
-    track.connect(otherGainNode).connect(audioContext.destination)
-  
-    const vocalTrack = audioContext.createMediaElementSource(vocalAudio);
-    vocalTrack.connect(vocalGainNode).connect(audioContext.destination);
-  
-    const bassTrack = audioContext.createMediaElementSource(bassAudio);
-    bassTrack.connect(bassGainNode).connect(audioContext.destination);
-  
-    const drumsTrack = audioContext.createMediaElementSource(drumsAudio);
-    drumsTrack.connect(drumsGainNode).connect(audioContext.destination);
-  }
-
-  
-  async function setupEventListeners(){
+  const setupEventListeners = () => {
     otherVolume?.addEventListener('input', event => {
       const element = event.target as HTMLInputElement
-      otherGainNode.gain.value = parseFloat(element.value)
+      otherGainNode.current.gain.value = parseFloat(element.value)
     })
   
     vocalVolume?.addEventListener('input', event => {
       const element = event.target as HTMLInputElement
-      vocalGainNode.gain.value = parseFloat(element.value)
+      vocalGainNode.current.gain.value = parseFloat(element.value)
     })
   
     bassVolume?.addEventListener('input', event => {
       const element = event.target as HTMLInputElement
-      bassGainNode.gain.value = parseFloat(element.value)
+      bassGainNode.current.gain.value = parseFloat(element.value)
     })
   
     drumsVolume?.addEventListener('input', event => {
       const element = event.target as HTMLInputElement
-      drumsGainNode.gain.value = parseFloat(element.value)
+      drumsGainNode.current.gain.value = parseFloat(element.value)
     })
   }
 
+  useEffect(() => {
+    setupContext();
+    setupEventListeners();
 
-    useEffect(() => {
-      console.log(playing)
+    const handleLoadedMetadata = () => {
+      setDuration(vocalAudio.current.duration);
+    };
 
-      playing ? vocalAudio.play() : vocalAudio.pause();
-      playing ? bassAudio.play() : bassAudio.pause();
-      playing ? drumsAudio.play() : drumsAudio.pause();
-      playing ? otherAudio.play() : otherAudio.pause();
+    const handleTimeUpdate = () => {
+      setCurrentTime(vocalAudio.current.currentTime);
+    };
 
-      vocalAudio.addEventListener('ended', () => setPlaying(false));
+    vocalAudio.current.addEventListener('loadedmetadata', handleLoadedMetadata)
+    vocalAudio.current.addEventListener('timeupdate', handleTimeUpdate)
+    // vocalAudio.current.removeEventListener('ended', () => setPlaying(false));
 
-      return () => {
-        vocalAudio.removeEventListener('ended', () => setPlaying(false));
-      };
-    });
 
-    setupEventListeners()
-    setupContext()
+    return () => {
+      vocalAudio.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      vocalAudio.current.removeEventListener('timeupdate', handleTimeUpdate);
+      vocalAudio.current.removeEventListener('ended', () => setPlaying(false));
+    };
+  }, []);
+
+  useEffect(() => {
+    const playAudio = async () => {
+      try {
+        if (audioContext.current.state === 'suspended') {
+          await audioContext.current.resume(); // Ensure AudioContext is resumed after user interaction
+        }
+
+      if (playing) {
+        vocalAudio.current.play()
+        bassAudio.current.play()
+        drumsAudio.current.play()
+        otherAudio.current.play()
+      } else {
+        vocalAudio.current.pause()
+        bassAudio.current.pause()
+        drumsAudio.current.pause()
+        otherAudio.current.pause()
+      }
+    } catch (error) {
+      console.error('Error handling audio play:', error);
+    }
+  }
+    
+    playAudio();
+  }, [playing]);
+
+  const handleVolumeChange = (event, track) => {
+    console.log("handle volume change " + event + " " + track )
+    const value = parseFloat(event.target.value);
+    switch (track) {
+      case 'other':
+        otherGainNode.current.gain.value = value;
+        break;
+      case 'vocal':
+        console.log("before: " + vocalGainNode.current.gain.value)
+        vocalGainNode.current.gain.value = value;
+        console.log("after: " + vocalGainNode.current.gain.value)
+        break;
+      case 'bass':
+        bassGainNode.current.gain.value = value;
+        break;
+      case 'drums':
+        drumsGainNode.current.gain.value = value;
+        break;
+      default:
+        break;
+    }
+  };
 
 
   return(
@@ -152,7 +221,15 @@ const drumsVolume = document.getElementById("drums-volume")!;
                     }}/> :
                   <PlayArrowIcon onClick = {() => handleSetPlaying()} style={{ 'alignSelf': 'center',  'padding': '0.2em', 'borderRadius': '20px', color: 'white', 'backgroundColor': '#1DB954'}}/>}
               </Box>
-              <Slider id='remix-playing-time' aria-label="Play time" defaultValue={0} valueLabelDisplay="auto" style={{ color: '#1DB954' }}/>
+              <Slider 
+                id='remix-playing-time'
+                value={(currentTime / duration) * 100}
+                aria-label="Play time"
+                defaultValue={0}
+                valueLabelDisplay="auto"
+                style={{ color: '#1DB954' }}
+                onChange={handleSliderChange}
+              />
             </Box>
         </Box>
       </Box>
@@ -171,7 +248,11 @@ const drumsVolume = document.getElementById("drums-volume")!;
             <FontAwesomeIcon icon={faMicrophoneLines} className='icon'/>
 
           </Box>
-          <input type="range" id="vocal-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+          <input 
+            ref={vocalVolumeRef}
+          type="range" id="vocal-volume" min="0" max="1" defaultValue="0.5" step="0.01"
+          onInput={(event) => handleVolumeChange(event, 'vocal')}
+          />
         </Box>
 
         <Box
@@ -184,7 +265,11 @@ const drumsVolume = document.getElementById("drums-volume")!;
           >
             <FontAwesomeIcon icon={faDrum} className='icon'/>
           </Box>
-          <input type="range" id="drums-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+          <input 
+            ref={drumsVolumeRef}
+          type="range" id="drums-volume" min="0" max="1" defaultValue="0.5" step="0.01"
+          onInput={(event) => handleVolumeChange(event, 'drums')}
+          />
         </Box>  
         
         <Box
@@ -197,7 +282,11 @@ const drumsVolume = document.getElementById("drums-volume")!;
           >
             <FontAwesomeIcon icon={faGuitar} className='icon'/>
           </Box>
-          <input type="range" id="bass-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+          <input
+             ref={bassVolumeRef} 
+            type="range" id="bass-volume" min="0" max="1" defaultValue="0.5" step="0.01"
+            onInput={(event) => handleVolumeChange(event, 'bass')}
+            />
         </Box>
         
         <Box
@@ -210,7 +299,16 @@ const drumsVolume = document.getElementById("drums-volume")!;
           >
             <FontAwesomeIcon icon={faMusic} className='icon'/>
           </Box>
-          <input type="range" id="other-volume" min="0" max="1" defaultValue="0.5" step="0.01"/>
+          <input
+            ref={otherVolumeRef} 
+            type="range"
+            id="other-volume"
+            min="0"
+            max="1"
+            defaultValue="0.5"
+            step="0.01"
+            onInput={(event) => handleVolumeChange(event, 'other')}
+          />
         </Box>
       </Box>
 
