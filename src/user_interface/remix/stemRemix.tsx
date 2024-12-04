@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import  React, { useState, useEffect, useRef } from 'react';
+import  React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   Box,
   Typography
@@ -59,7 +59,7 @@ const StemRemix = () => {
     drums: drumsAudio.current
   });
 
-  const setupContext = () => {
+  const setupContext = useCallback(() => {
     const track = audioContext.current.createMediaElementSource(audioElements.other);
     track.connect(otherGainNode.current).connect(audioContext.current.destination)
   
@@ -71,7 +71,7 @@ const StemRemix = () => {
   
     const drumsTrack = audioContext.current.createMediaElementSource(audioElements.drums);
     drumsTrack.connect(drumsGainNode.current).connect(audioContext.current.destination);
-  }
+  }, [audioElements.other, audioElements.bass, audioElements.drums, audioElements.vocal]);
 
   const handleSliderChange = (event, newValue) => {
     const audio = vocalAudio;
@@ -82,7 +82,7 @@ const StemRemix = () => {
     setPlaying(playing => !playing)
   }
 
-  const setupEventListeners = () => {
+  const setupEventListeners = useCallback(() => {
     otherVolume?.addEventListener('input', event => {
       const element = event.target as HTMLInputElement
       otherGainNode.current.gain.value = parseFloat(element.value)
@@ -102,7 +102,7 @@ const StemRemix = () => {
       const element = event.target as HTMLInputElement
       drumsGainNode.current.gain.value = parseFloat(element.value)
     })
-  }
+  }, [otherVolume, vocalVolume, bassVolume,drumsVolume]);
 
   useEffect(() => {
     setupContext();
@@ -118,13 +118,9 @@ const StemRemix = () => {
 
     vocalAudio.current.addEventListener('loadedmetadata', handleLoadedMetadata)
     vocalAudio.current.addEventListener('timeupdate', handleTimeUpdate)
-    // vocalAudio.current.removeEventListener('ended', () => setPlaying(false));
 
 
     return () => {
-      vocalAudio.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      vocalAudio.current.removeEventListener('timeupdate', handleTimeUpdate);
-      vocalAudio.current.removeEventListener('ended', () => setPlaying(false));
     };
   }, []);
 
