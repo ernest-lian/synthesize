@@ -44,6 +44,13 @@
     #remix-playing {
         display: flex;
         flex-direction: column;
+        width: 90%;
+        height: 90%;
+        background-color: white;
+        margin: 20px;
+        /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+        border-radius: 20px;
+        justify-content: space-between;
     }
 
     #remix-playing-title {
@@ -55,6 +62,13 @@
     #remix-playing-artist {
         font-size: 10px;
         font-family: 'Lato', sans-serif;
+    }
+
+    #remix-window {
+        background-color: #F1F0E8;
+        height: 95%;
+        width: 90%;
+        border-radius: 20px;
     }
 }
 
